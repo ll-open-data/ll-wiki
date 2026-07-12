@@ -1,0 +1,6 @@
+---
+"@context": "https://schema.org"
+"@id": "イキヅライブ! LOVELIVE! BLUEBIRD.md"
+"@type": "Series"
+"name": "イキヅライブ! LOVELIVE! BLUEBIRD"
+---
