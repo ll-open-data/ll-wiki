@@ -37,15 +37,14 @@ name: "Wikiガイド"
 ## 記法
 
 - ページについての属性は、フロントマターに記述する。
+- フロントマターには以下の4項目のみを記載する。
 
-キャラクターに関するページの例:
-
-```yaml
-"@context": "https://schema.org"
-"@id": "高橋ポルカ"
-"@type": "Person"
-"name": "高橋ポルカ"
-```
+| キー | 内容 |
+|---|---|
+| `@context` | 常に `https://schema.org` 固定 |
+| `@id` | ファイルのスラグ (ファイル名と一致させる) |
+| `@type` | エンティティの種別 |
+| `name` | 表示名 |
 
 - ページ間のリンク・関係を表すときは、Wikilinks記法を用いて
 [[リンク対象]](関係)
@@ -56,3 +55,56 @@ name: "Wikiガイド"
 [[いきづらい部]](memberOf)
 
 これらの記法によって、コミット時にJSON-LDが自動生成される。
+
+## エンティティ別プロパティ規約
+
+### MusicAlbum (シングル/アルバム)
+
+表題曲とシングル/アルバムページは同一とする。
+
+| プロパティ | 終点エンティティ | 意味 |
+|---|---|---|
+| `byArtist` | `Person` / `MusicGroup` | 歌唱しているキャラクターまたはユニット |
+| `track` | `MusicAlbum` | 表題曲以外の収録楽曲 |
+| `subjectOf` | `MusicEvent` | このシングル/アルバムが披露されたイベント |
+
+### MusicRecording (楽曲)
+
+表題曲以外の収録曲に使用する。
+
+| プロパティ | 終点エンティティ | 意味 |
+|---|---|---|
+| `byArtist` | `Person` / `MusicGroup` | 歌唱しているキャラクターまたはユニット |
+| `inAlbum` | `MusicAlbum` | 収録されているシングル/アルバム |
+| `subjectOf` | `MusicEvent` | この楽曲が披露されたイベント |
+
+### MusicGroup (グループ/ユニット)
+
+| プロパティ | 終点エンティティ | 意味 |
+|---|---|---|
+| `album` | `MusicAlbum` | リリースしたシングル/アルバム |
+| `parentOrganization` | `MusicGroup` | 所属する親ユニット (サブユニットの場合のみ) |
+| `subOrganization` | `MusicGroup` | 傘下のサブユニット (親ユニットの場合のみ) |
+
+### Person (キャラクター/声優)
+
+`Person` はキャラクターと声優の両方に使用する。
+
+| プロパティ | 終点エンティティ | キャラクター | 声優 |
+|---|---|---|---|
+| `memberOf` | `MusicGroup` | 所属するグループ/ユニット | 所属するグループ/ユニット |
+| `affiliation` | `Organization` | 所属している学校 | 所属している事務所 |
+
+### MusicEvent (ライブイベント)
+
+| プロパティ | 終点エンティティ | 意味 |
+|---|---|---|
+| `actor` | `Person` | 演者 (声優) |
+| `location` | `Place` | 開催会場 |
+| `workPerformed` | `MusicAlbum` / `MusicRecording` | セットリスト |
+
+### Place (ライブイベント会場)
+
+| プロパティ | 終点エンティティ | 意味 |
+|---|---|---|
+| `subjectOf` | `MusicEvent` | この会場で開催されたライブイベント |

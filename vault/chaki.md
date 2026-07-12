@@ -3,7 +3,6 @@
 "@id": "chaki"
 "@type": "MusicGroup"
 "name": "CHAKI!"
-"memberOf": "いきづらい部!"
 ---
 
 # CHAKI!
