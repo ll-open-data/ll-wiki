@@ -1,0 +1,24 @@
+{
+	"@context": "https://schema.org",
+	"@id": "既読待ちlovers",
+	"@type": "MusicGroup",
+	"name": "既読待ちLovers",
+	"memberOf": "いきづらい部!",
+	"parentOrganization": {
+		"@id": "いきづらい部"
+	},
+	"member": [
+		{
+			"@id": "麻布麻衣"
+		},
+		{
+			"@id": "此花輝夜"
+		},
+		{
+			"@id": "佐々木翔音"
+		}
+	],
+	"track": {
+		"@id": "tap-tap-tappin"
+	}
+}

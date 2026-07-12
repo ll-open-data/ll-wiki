@@ -1,0 +1,24 @@
+{
+	"@context": "https://schema.org",
+	"@id": "こーるみー",
+	"@type": "MusicGroup",
+	"name": "こーるみー!!!",
+	"memberOf": "いきづらい部!",
+	"parentOrganization": {
+		"@id": "いきづらい部"
+	},
+	"member": [
+		{
+			"@id": "高橋ポルカ"
+		},
+		{
+			"@id": "五桐玲"
+		},
+		{
+			"@id": "金澤奇跡"
+		}
+	],
+	"track": {
+		"@id": "全力calling-i-love-you"
+	}
+}

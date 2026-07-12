@@ -1,0 +1,29 @@
+{
+	"@context": "https://schema.org",
+	"@id": "plumina",
+	"@type": "MusicGroup",
+	"name": "Plumina",
+	"memberOf": [
+		"いきづらい部!",
+		{
+			"@id": "梅田サテライト"
+		}
+	],
+	"parentOrganization": {
+		"@id": "いきづらい部"
+	},
+	"member": [
+		{
+			"@id": "春宮ゆくり"
+		},
+		{
+			"@id": "此花輝夜"
+		},
+		{
+			"@id": "山田真緑"
+		}
+	],
+	"track": {
+		"@id": "daitan-party-time"
+	}
+}

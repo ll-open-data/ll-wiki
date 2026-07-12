@@ -1,0 +1,12 @@
+{
+	"@context": "https://schema.org",
+	"@id": "未完成なラブレター",
+	"@type": "MusicRecording",
+	"name": "未完成なラブレター",
+	"byArtist": [
+		"恋文乙女純情派",
+		{
+			"@id": "恋文乙女純情派"
+		}
+	]
+}

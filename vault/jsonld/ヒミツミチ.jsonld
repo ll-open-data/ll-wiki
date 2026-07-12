@@ -1,0 +1,13 @@
+{
+	"@context": "https://schema.org",
+	"@id": "ヒミツミチ",
+	"@type": "MusicRecording",
+	"name": "ヒミツミチ",
+	"byArtist": [
+		"いきづらい部!",
+		{
+			"@id": "いきづらい部"
+		}
+	],
+	"datePublished": "2025-07-30"
+}

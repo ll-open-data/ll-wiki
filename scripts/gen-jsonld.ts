@@ -1,15 +1,8 @@
+import { extract } from "@std/front-matter/yaml";
 import { join } from "@std/path";
-import { parse as parseYaml } from "@std/yaml";
 
 const VAULT_DIR = "./vault";
-const RDF_DIR = "./rdf";
-
-function parseFrontmatter(content: string): Record<string, unknown> | null {
-	const parts = content.split("---");
-	const result = parseYaml(parts[1].trim());
-	if (typeof result !== "object" || result === null) return null;
-	return result as Record<string, unknown>;
-}
+const OUT_DIR = "./vault/jsonld";
 
 function parseRelations(
 	body: string,
@@ -25,34 +18,31 @@ function parseRelations(
 }
 
 async function main() {
-	await Deno.mkdir(RDF_DIR, { recursive: true });
+	await Deno.mkdir(OUT_DIR, { recursive: true });
 
 	for await (const entry of Deno.readDir(VAULT_DIR)) {
 		if (!entry.name.endsWith(".md") || entry.name.startsWith("_")) continue;
 
 		const content = await Deno.readTextFile(join(VAULT_DIR, entry.name));
-		const frontmatter = parseFrontmatter(content);
-		if (!frontmatter?.["@type"]) continue;
+		const { attrs, body } = extract<Record<string, unknown>>(content);
+		if (!attrs["@type"]) continue;
 
-		const body = content.split("---").slice(2).join("---");
 		const relations = parseRelations(body);
-
-		const jsonld: Record<string, unknown> = { ...frontmatter };
+		const jsonld: Record<string, unknown> = { ...attrs };
 
 		for (const { relation, target } of relations) {
-			const targetId = `${target}.md`;
 			const existing = jsonld[relation];
 			if (existing === undefined) {
-				jsonld[relation] = { "@id": targetId };
+				jsonld[relation] = { "@id": target };
 			} else if (Array.isArray(existing)) {
-				(existing as Array<unknown>).push({ "@id": targetId });
+				existing.push({ "@id": target });
 			} else {
-				jsonld[relation] = [existing, { "@id": targetId }];
+				jsonld[relation] = [existing, { "@id": target }];
 			}
 		}
 
 		const outName = entry.name.replace(".md", ".jsonld");
-		const outPath = join(RDF_DIR, outName);
+		const outPath = join(OUT_DIR, outName);
 		await Deno.writeTextFile(outPath, JSON.stringify(jsonld, null, 2));
 		console.log(`generated: ${outPath}`);
 	}

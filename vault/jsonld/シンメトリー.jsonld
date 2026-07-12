@@ -1,0 +1,12 @@
+{
+	"@context": "https://schema.org",
+	"@id": "シンメトリー",
+	"@type": "MusicRecording",
+	"name": "シンメトリー",
+	"byArtist": [
+		"Mi×Nori=Tea",
+		{
+			"@id": "mi-nori-tea"
+		}
+	]
+}

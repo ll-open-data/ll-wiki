@@ -3,6 +3,7 @@ import references from "lume_markdown_plugins/references.ts";
 import wikilinks from "lume_markdown_plugins/wikilinks.ts";
 
 const site = lume({ src: "./vault" });
+site.add("jsonld");
 
 site.preprocess([".md"], (pages) => {
 	for (const page of pages) {
@@ -34,9 +35,13 @@ site.process([".html"], (pages) => {
 			link.removeAttribute("data-wikilink");
 
 			// Search a page with this id
-			const found = pages.find(
-				(p) => p.data.basename === decodeURIComponent(id ?? ""),
-			);
+			// wikilinks plugin slugifies the id (lowercase + spaces→hyphens + encodeURIComponent),
+			// so we apply the same transform to basenames for comparison.
+			const decodedId = decodeURIComponent(id ?? "");
+			const found = pages.find((p) => {
+				const basename = (p.data.basename as string) ?? "";
+				return basename.trim().toLowerCase().replace(/\s+/g, "-") === decodedId;
+			});
 
 			if (found) {
 				link.setAttribute("href", found.data.url);

@@ -1,0 +1,12 @@
+{
+	"@context": "https://schema.org",
+	"@id": "tap-tap-tappin",
+	"@type": "MusicRecording",
+	"name": "tap tap tappin'!!",
+	"byArtist": [
+		"既読待ちLovers",
+		{
+			"@id": "既読待ちlovers"
+		}
+	]
+}

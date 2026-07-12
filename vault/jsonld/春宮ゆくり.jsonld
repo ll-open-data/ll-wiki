@@ -1,0 +1,28 @@
+{
+	"@context": "https://schema.org",
+	"@id": "春宮ゆくり",
+	"@type": "Person",
+	"name": "春宮ゆくり",
+	"birthDate": "--09-22",
+	"height": "165cm",
+	"affiliation": [
+		"梅田サテライト",
+		{
+			"@id": "梅田サテライト"
+		}
+	],
+	"memberOf": [
+		{
+			"@id": "いきづらい部"
+		},
+		{
+			"@id": "plumina"
+		},
+		{
+			"@id": "恋文乙女純情派"
+		}
+	],
+	"subjectOf": {
+		"@id": "pray-for-love"
+	}
+}

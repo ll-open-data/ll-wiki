@@ -1,9 +1,0 @@
-{
-	"@context": "https://schema.org",
-	"@id": "高橋ポルカ.md",
-	"@type": "Person",
-	"name": "高橋ポルカ",
-	"memberOf": {
-		"@id": "いきづらい部!.md"
-	}
-}

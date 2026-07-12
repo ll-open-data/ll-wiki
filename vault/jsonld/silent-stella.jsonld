@@ -1,0 +1,12 @@
+{
+	"@context": "https://schema.org",
+	"@id": "silent-stella",
+	"@type": "MusicRecording",
+	"name": "Silent Stella",
+	"byArtist": [
+		"SH1ON",
+		{
+			"@id": "sh1on"
+		}
+	]
+}

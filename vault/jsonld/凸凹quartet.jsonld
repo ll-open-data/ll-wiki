@@ -1,0 +1,12 @@
+{
+	"@context": "https://schema.org",
+	"@id": "凸凹quartet",
+	"@type": "MusicRecording",
+	"name": "凸凹Quartet",
+	"byArtist": [
+		"CHAKI!",
+		{
+			"@id": "chaki"
+		}
+	]
+}

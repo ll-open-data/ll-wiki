@@ -1,0 +1,12 @@
+{
+	"@context": "https://schema.org",
+	"@id": "pray-for-love",
+	"@type": "MusicRecording",
+	"name": "Pray for love",
+	"byArtist": [
+		"春宮ゆくり",
+		{
+			"@id": "春宮ゆくり"
+		}
+	]
+}
