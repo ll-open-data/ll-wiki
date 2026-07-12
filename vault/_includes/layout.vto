@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ja" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ name || title }} - LL Wiki</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.pink.min.css">
+  <style>
+    body > header nav { padding-block: 0.75rem; }
+    .page-content { margin-block-end: 2rem; }
+    .link-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: 0.75rem;
+      margin-block-start: 0.75rem;
+    }
+    .link-card {
+      padding: 0.75rem 1rem;
+      border: 1px solid var(--pico-muted-border-color);
+      border-radius: var(--pico-border-radius);
+      text-decoration: none;
+      display: block;
+      color: var(--pico-primary);
+    }
+    .link-card:hover {
+      background: var(--pico-card-background-color);
+      border-color: var(--pico-primary);
+    }
+    .backlinks-section { margin-block-start: 2rem; }
+    hr { margin-block: 2rem; }
+    .broken-link {
+      color: var(--pico-muted-color);
+      text-decoration: line-through;
+      cursor: not-allowed;
+    }
+  </style>
+</head>
+<body>
+  <header class="container">
+    <nav>
+      <ul>
+        <li><strong><a href="/">LL Wiki</a></strong></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="container">
+    <div class="page-content">
+      {{ content |> safe }}
+    </div>
+
+    {{ set backlinks = search.pages("references*='" + url + "'") }}
+    {{ if (references && references.length > 0) || backlinks.length > 0 }}
+    <hr>
+    {{ /if }}
+
+    {{ if references && references.length > 0 }}
+    <section>
+      <h2>リンク</h2>
+      <nav class="link-grid">
+        {{ for ref of references }}
+        {{ set p = search.page("url='" + ref + "'") }}
+        {{ if p }}<a href="{{ ref }}" class="link-card">{{ p.name || p.title }}</a>{{ /if }}
+        {{ /for }}
+      </nav>
+    </section>
+    {{ /if }}
+
+    {{ if backlinks.length > 0 }}
+    <section>
+      <h2>バックリンク</h2>
+      <nav class="link-grid">
+        {{ for p of backlinks }}
+        <a href="{{ p.url }}" class="link-card">{{ p.name || p.title }}</a>
+        {{ /for }}
+      </nav>
+    </section>
+    {{ /if }}
+  </main>
+</body>
+</html>
