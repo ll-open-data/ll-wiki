@@ -1,10 +1,8 @@
 ---
 "@context": "https://schema.org"
 "@id": "little-green委員会"
-"@type": "MusicRecording"
+"@type": "MusicAlbum"
 "name": "Little Green委員会"
-"byArtist": "山田真緑"
-"datePublished": "2025-10-29"
 ---
 
 # Little Green委員会

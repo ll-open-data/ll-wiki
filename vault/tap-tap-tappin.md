@@ -1,9 +1,8 @@
 ---
 "@context": "https://schema.org"
 "@id": "tap-tap-tappin"
-"@type": "MusicRecording"
+"@type": "MusicAlbum"
 "name": "tap tap tappin'!!"
-"byArtist": "既読待ちLovers"
 ---
 
 # tap tap tappin'!!

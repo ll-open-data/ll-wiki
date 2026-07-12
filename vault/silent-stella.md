@@ -1,9 +1,8 @@
 ---
 "@context": "https://schema.org"
 "@id": "silent-stella"
-"@type": "MusicRecording"
+"@type": "MusicAlbum"
 "name": "Silent Stella"
-"byArtist": "SH1ON"
 ---
 
 # Silent Stella

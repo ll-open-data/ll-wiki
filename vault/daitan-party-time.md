@@ -1,9 +1,8 @@
 ---
 "@context": "https://schema.org"
 "@id": "daitan-party-time"
-"@type": "MusicRecording"
+"@type": "MusicAlbum"
 "name": "Daitan Party Time"
-"byArtist": "Plumina"
 ---
 
 # Daitan Party Time

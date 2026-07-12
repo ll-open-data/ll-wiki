@@ -3,7 +3,6 @@
 "@id": "既読待ちlovers"
 "@type": "MusicGroup"
 "name": "既読待ちLovers"
-"memberOf": "いきづらい部!"
 ---
 
 # 既読待ちLovers
@@ -18,4 +17,4 @@
 
 ## 楽曲
 
-- [[tap-tap-tappin]](track)
+- [[tap-tap-tappin]](album)

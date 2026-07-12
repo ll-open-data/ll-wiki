@@ -1,10 +1,8 @@
 ---
 "@context": "https://schema.org"
 "@id": "イキタクナイevery-day"
-"@type": "MusicRecording"
+"@type": "MusicAlbum"
 "name": "イキタクナイevery day"
-"byArtist": "佐々木翔音"
-"datePublished": "2025-10-29"
 ---
 
 # イキタクナイevery day

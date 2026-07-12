@@ -18,4 +18,4 @@
 
 ## 楽曲
 
-- [[凸凹quartet]](track)
+- [[凸凹quartet]](album)

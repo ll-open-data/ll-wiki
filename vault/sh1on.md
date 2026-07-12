@@ -3,7 +3,6 @@
 "@id": "sh1on"
 "@type": "MusicGroup"
 "name": "SH1ON"
-"memberOf": "いきづらい部!"
 ---
 
 # SH1ON
@@ -16,4 +15,4 @@
 
 ## 楽曲
 
-- [[silent-stella]](track)
+- [[silent-stella]](album)

@@ -1,21 +1,15 @@
 ---
 "@context": "https://schema.org"
 "@id": "イキヅライブ-lovelive-bluebird"
-"@type": "CreativeWorkSeries"
+"@type": "TVSeries"
 "name": "イキヅライブ! LOVELIVE! BLUEBIRD"
-"startDate": "2025-05-12"
-"publisher":
-  - "バンダイナムコフィルムワークス"
-  - "バンダイナムコミュージックライブ"
-  - "KADOKAWA"
-"author": "矢立肇"
 ---
 
 # イキヅライブ! LOVELIVE! BLUEBIRD
 
 ラブライブ！シリーズのメディアミックスプロジェクト。2025年5月12日始動。
 
-架空のインターネット通信制高校「Love学院高等学校（L高）」を舞台に、4つのサテライト校から集まった凸凹な10人の少女たちがスクールアイドルグループ[[いきづらい部]](hasPart)を結成し、L高の生徒数増加を目指して活動する。
+架空のインターネット通信制高校「Love学院高等学校（L高）」を舞台に、4つのサテライト校から集まった凸凹な10人の少女たちがスクールアイドルグループ[[いきづらい部]](musicBy)を結成し、L高の生徒数増加を目指して活動する。
 
 ## スタッフ
 
@@ -25,12 +19,12 @@
 
 ## サテライト校
 
-- [[浅草サテライト]](hasPart) (東京)
-- [[福井サテライト]](hasPart) (北陸)
-- [[梅田サテライト]](hasPart) (大阪)
-- [[仙台サテライト]](hasPart) (東北)
+- [[浅草サテライト]]] (東京)
+- [[福井サテライト]]] (北陸)
+- [[梅田サテライト]]] (大阪)
+- [[仙台サテライト]]] (東北)
 
 ## ライブ
 
-- 1st LIVE「What is my L?」2026年2月14-15日 at 幕張イベントホール
-- 2nd LIVE 2026年9月19-20日 at 京王アリーナTOKYO
+- [[what-is-my-l]](recordedAt) 1st LIVE「What is my L?」2026年2月14-15日 at 幕張イベントホール
+- [[イキヅライブ-lovelive-bluebird-2nd-live]](recordedAt) 2nd LIVE 2026年9月19-20日 at 京王アリーナTOKYO

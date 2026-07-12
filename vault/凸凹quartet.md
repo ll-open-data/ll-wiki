@@ -1,9 +1,8 @@
 ---
 "@context": "https://schema.org"
 "@id": "凸凹quartet"
-"@type": "MusicRecording"
+"@type": "MusicAlbum"
 "name": "凸凹Quartet"
-"byArtist": "CHAKI!"
 ---
 
 # 凸凹Quartet

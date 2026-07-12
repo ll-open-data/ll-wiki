@@ -1,10 +1,8 @@
 ---
 "@context": "https://schema.org"
 "@id": "浅草guilty-girlの歌"
-"@type": "MusicRecording"
+"@type": "MusicAlbum"
 "name": "浅草Guilty Girlの歌"
-"byArtist": "高橋ポルカ"
-"datePublished": "2025-08-27"
 ---
 
 # 浅草Guilty Girlの歌

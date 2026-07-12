@@ -3,7 +3,6 @@
 "@id": "mi-nori-tea"
 "@type": "MusicGroup"
 "name": "Mi×Nori=Tea"
-"memberOf": "いきづらい部!"
 ---
 
 # Mi×Nori=Tea
@@ -17,4 +16,4 @@
 
 ## 楽曲
 
-- [[シンメトリー]](track)
+- [[シンメトリー]](album)

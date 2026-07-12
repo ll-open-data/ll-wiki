@@ -1,10 +1,8 @@
 ---
 "@context": "https://schema.org"
 "@id": "hibana-火花"
-"@type": "MusicRecording"
+"@type": "MusicAlbum"
 "name": "HIBANA―火花―"
-"byArtist": "駒形花火"
-"datePublished": "2025-09-10"
 ---
 
 # HIBANA―火花―

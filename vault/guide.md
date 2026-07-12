@@ -83,6 +83,7 @@ name: "Wikiガイド"
 | プロパティ | 終点エンティティ | 意味 |
 |---|---|---|
 | `album` | `MusicAlbum` | リリースしたシングル/アルバム |
+| `member` | `Person` | メンバー |
 | `parentOrganization` | `MusicGroup` | 所属する親ユニット (サブユニットの場合のみ) |
 | `subOrganization` | `MusicGroup` | 傘下のサブユニット (親ユニットの場合のみ) |
 
@@ -93,6 +94,7 @@ name: "Wikiガイド"
 | プロパティ | 終点エンティティ | キャラクター | 声優 |
 |---|---|---|---|
 | `memberOf` | `MusicGroup` | 所属するグループ/ユニット | 所属するグループ/ユニット |
+| `album` | `MusicAlbum` | リリースしたソロシングル/アルバム | - |
 | `affiliation` | `Organization` | 所属している学校 | 所属している事務所 |
 
 ### MusicEvent (ライブイベント)
@@ -102,6 +104,15 @@ name: "Wikiガイド"
 | `actor` | `Person` | 演者 (声優) |
 | `location` | `Place` | 開催会場 |
 | `workPerformed` | `MusicAlbum` / `MusicRecording` | セットリスト |
+
+### TVSeries (メディアミックスプロジェクト)
+
+| プロパティ | 終点エンティティ | 意味 |
+|---|---|---|
+| `actor` | `Person` | 声優 |
+| `character` | `Person` | 登場キャラクター |
+| `recordedAt` | `MusicEvent` | ライブイベント |
+| `musicBy` | `MusicGroup` | プロジェクトの親ユニット |
 
 ### Place (ライブイベント会場)
 

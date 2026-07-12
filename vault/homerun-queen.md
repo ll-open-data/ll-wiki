@@ -1,10 +1,8 @@
 ---
 "@context": "https://schema.org"
 "@id": "homerun-queen"
-"@type": "MusicRecording"
+"@type": "MusicAlbum"
 "name": "HomeRun Queen!!"
-"byArtist": "金澤奇跡"
-"datePublished": "2025-09-24"
 ---
 
 # HomeRun Queen!!

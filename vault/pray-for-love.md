@@ -1,10 +1,8 @@
 ---
 "@context": "https://schema.org"
 "@id": "pray-for-love"
-"@type": "MusicRecording"
+"@type": "MusicAlbum"
 "name": "Pray for love"
-"byArtist": "春宮ゆくり"
-"datePublished": "2025-10-08"
 ---
 
 # Pray for love

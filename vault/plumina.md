@@ -3,7 +3,6 @@
 "@id": "plumina"
 "@type": "MusicGroup"
 "name": "Plumina"
-"memberOf": "いきづらい部!"
 ---
 
 # Plumina
@@ -18,4 +17,4 @@
 
 ## 楽曲
 
-- [[daitan-party-time]](track)
+- [[daitan-party-time]](album)

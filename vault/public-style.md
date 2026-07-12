@@ -1,10 +1,8 @@
 ---
 "@context": "https://schema.org"
 "@id": "public-style"
-"@type": "MusicRecording"
+"@type": "MusicAlbum"
 "name": "Public Style"
-"byArtist": "麻布麻衣"
-"datePublished": "2025-08-27"
 ---
 
 # Public Style
