@@ -19,8 +19,17 @@ Deno.serve((req: Request): Promise<Response> => {
 });
 
 async function handleSparql(req: Request): Promise<Response> {
-	const body = await req.json();
-	const query: string = body.query;
+	let query: string;
+
+	try {
+		const body = await req.json();
+		query = body.query;
+	} catch {
+		return new Response(JSON.stringify({ error: "invalid JSON" }), {
+			status: 400,
+			headers: { "Content-Type": "application/json" },
+		});
+	}
 
 	if (!query) {
 		return new Response(JSON.stringify({ error: "query is required" }), {
