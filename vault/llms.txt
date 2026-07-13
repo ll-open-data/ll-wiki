@@ -1,0 +1,82 @@
+# ll-wiki llms.txt
+
+## 概要
+
+ラブライブ！シリーズに関する構造化データを収録したWikiです。schema.org語彙とObsidian形式のwikilinksを用いてデータを記述し、JSON-LDに変換することでSPARQLクエリに対応しています。
+
+## データの場所
+
+すべてのコンテンツは `vault/` 以下に存在します。現在収録しているシリーズは `ikizulive`（イキヅライブ! LOVELIVE! BLUEBIRD）です。
+
+## ディレクトリ構成
+
+```
+vault/
+  index.md                        # トップページ
+  guide.md                        # 記述規約・スキーマガイド
+  jsonld/graph.jsonld             # コンパイル済み知識グラフ (JSON-LD)
+  sparql/index.html               # SPARQLクエリUI
+  ikizulive/
+    TVSeries/                     # メディアミックスプロジェクト
+    Person/                       # キャラクター・声優
+    MusicGroup/                   # ユニット・グループ
+    MusicAlbum/                   # シングル・アルバム（表題曲含む）
+    MusicRecording/               # 収録曲（表題曲以外）
+    MusicEvent/                   # ライブイベント
+    EducationalOrganization/      # サテライト校
+    Place/                        # ライブ会場
+```
+
+## ファイル形式
+
+各ファイルはYAMLフロントマターを持ちます。
+
+```yaml
+---
+"@context": "https://schema.org"
+"@id": "<ファイル名と一致するスラグ>"
+"@type": "<schema.orgの型>"
+"name": "<表示名>"
+---
+```
+
+本文は自由形式のMarkdownです。エンティティ間の関係はwikilinks記法で表現します。
+
+```
+[[対象スラグ]](プロパティ名)
+```
+
+例: `[[いきづらい部]](memberOf)` はこのエンティティが `memberOf` として `いきづらい部` を指すことを意味します。
+
+## 主なリレーションプロパティ (schema.org)
+
+| プロパティ | From | To | 意味 |
+|---|---|---|---|
+| memberOf | Person | MusicGroup | キャラクター/声優がグループに所属 |
+| member | MusicGroup | Person | グループがメンバーを持つ |
+| album | Person/MusicGroup | MusicAlbum | リリースしたシングル/アルバム |
+| byArtist | MusicAlbum/MusicRecording | Person/MusicGroup | 歌唱アーティスト |
+| track | MusicAlbum | MusicRecording | アルバム収録曲（表題曲以外） |
+| inAlbum | MusicRecording | MusicAlbum | 収録されているアルバム |
+| subjectOf | MusicAlbum/MusicRecording | MusicEvent | 披露されたイベント |
+| workPerformed | MusicEvent | MusicAlbum/MusicRecording | セットリスト |
+| actor | TVSeries/MusicEvent | Person | 声優 |
+| character | TVSeries | Person | 登場キャラクター |
+| relatedTo | Person | Person | キャラクター<->担当声優 |
+| affiliation | Person | EducationalOrganization | 所属学校/事務所 |
+| location | MusicEvent | Place | 開催会場 |
+| recordedAt | TVSeries | MusicEvent | 関連ライブイベント |
+| musicBy | TVSeries | MusicGroup | 親ユニット |
+| parentOrganization | MusicGroup | MusicGroup | 親ユニット |
+| subOrganization | MusicGroup | MusicGroup | サブユニット |
+
+## 機械可読グラフ
+
+`vault/jsonld/graph.jsonld` にすべてのエンティティとリレーションを含むJSON-LDグラフがあります。個別ファイルを読まずに構造化データを取得する場合はこちらが最速です。
+
+## スラグ命名規則
+
+- ASCII英字は小文字に変換
+- スペースは `-` に置換
+- 記号（`!`, `?`, `x`, `=`, `'` など）は `-` に変換し、連続する `-` は1つにまとめ、末尾の `-` は除去
+- 日本語（ひらがな・カタカナ・漢字）はそのまま維持

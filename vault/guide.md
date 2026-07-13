@@ -14,7 +14,7 @@ name: "Wikiガイド"
 
 - Agentic Search
     - ただRDFを記述するだけでなく、そこに自然言語で情報を付加することで、LLMによるAgentic Searchを可能にする
-    - AGENTS.mdに、llms.txtにデータ構造、サーチ方法を記載
+    - AGENTS.mdとllms.txtにデータ構造、サーチ方法を記載
 
 ## 規約
 

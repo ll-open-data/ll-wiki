@@ -540,9 +540,6 @@
 			"@id": "イキヅライブ-lovelive-bluebird",
 			"@type": "TVSeries",
 			"name": "イキヅライブ! LOVELIVE! BLUEBIRD",
-			"musicBy": {
-				"@id": "いきづらい部"
-			},
 			"character": [
 				{
 					"@id": "高橋ポルカ"

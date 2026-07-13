@@ -1,136 +1,275 @@
-<h1>SPARQL クエリ</h1>
+<h1>データベース検索</h1>
 
-<p>
-	エンドポイント: <code>POST /api/sparql</code> <code>{ "query": "..." }</code><br />
-	PREFIX: <code>ll: &lt;https://ll-wiki.local/&gt;</code> /
-	<code>schema: &lt;https://schema.org/&gt;</code>
-</p>
+<p>種別を選び、条件を追加して実行してください。</p>
+<ul>
+  <li>例: 種別「楽曲」→ 条件「歌唱アーティスト: 高橋ポルカ」→ 高橋ポルカの楽曲一覧</li>
+  <li>例: 種別「人」→ 条件「所属グループ/ユニット: いきづらい部」→ メンバー一覧</li>
+</ul>
 
-<label for="examples">クエリ例</label>
-<select id="examples">
-	<option value="">-- 選択 --</option>
-	<option value="persons">全 Person の一覧</option>
-	<option value="members">いきづらい部のメンバー</option>
-	<option value="cast">キャラクターとキャストの対応</option>
-	<option value="live">ライブで披露された曲 (What is my L?)</option>
-	<option value="units">キャラクターが所属するユニット</option>
+<label for="type">種別</label>
+<select id="type">
+  <option value="">-- 選択 --</option>
+  <option value="Person">人 (キャラクター/声優)</option>
+  <option value="Music">楽曲</option>
+  <option value="MusicGroup">グループ/ユニット</option>
+  <option value="MusicEvent">ライブイベント</option>
+  <option value="TVSeries">プロジェクト</option>
+  <option value="Place">会場</option>
 </select>
 
-<label for="query">クエリ</label>
-<textarea id="query" rows="10" style="width:100%;font-family:monospace"></textarea>
+<div id="conditions" style="margin-block: 1rem"></div>
 
-<button type="button" id="run">実行</button>
+<button type="button" id="add" disabled>+ 条件を追加</button>
+<button type="button" id="run" disabled style="margin-inline-start: 0.5rem">実行</button>
 
-<div id="status" style="margin-block:0.5rem"></div>
+<div id="status" style="margin-block: 0.5rem"></div>
 <div id="result"></div>
 
+<details style="margin-block-start: 2rem">
+  <summary>SPARQL を直接実行 (開発者向け)</summary>
+  <textarea id="sparql" rows="10" style="width:100%;font-family:monospace"></textarea>
+  <button type="button" id="direct-run">実行</button>
+</details>
+
 <script type="module">
-	import namespace from "https://esm.sh/@rdfjs/namespace";
-	// https://github.com/tpluscode/sparql-builder
-	import { SELECT } from "https://esm.sh/@tpluscode/sparql-builder";
-	import { DataFactory } from "https://esm.sh/rdf-data-factory";
+  // https://github.com/tpluscode/sparql-builder
+  import namespace from "https://esm.sh/@rdfjs/namespace";
+  import {SELECT} from "https://esm.sh/@tpluscode/sparql-builder";
+  import {DataFactory} from "https://esm.sh/rdf-data-factory";
 
-	const df = new DataFactory();
-	const schema = namespace("https://schema.org/");
-	const ll = (id) => df.namedNode(`https://ll-wiki.local/${id}`);
-	const v = (name) => df.variable(name);
+  const df = new DataFactory();
+  const schema = namespace("https://schema.org/");
+  const ll = (id) => df.namedNode(`https://ll-wiki.local/${id}`);
+  const v = (name) => df.variable(name);
 
-	const QUERIES = {
-		persons: SELECT`${v("name")}`
-			.WHERE`${v("s")} a ${schema("Person")} ; ${schema("name")} ${v("name")} .`
-			.ORDER()
-			.BY(v("name"))
-			.build(),
+  const PROPERTIES = {
+    Person: [
+      {label: "所属グループ/ユニット", prop: "memberOf"},
+      {label: "アルバム", prop: "album"},
+      {label: "所属学校/事務所", prop: "affiliation"},
+      {label: "担当声優/キャラクター", prop: "relatedTo"},
+    ],
+    Music: [
+      {label: "歌唱アーティスト", prop: "byArtist"},
+      {label: "披露されたイベント", prop: "subjectOf"},
+    ],
+    MusicGroup: [
+      {label: "メンバー", prop: "member"},
+      {label: "アルバム", prop: "album"},
+      {label: "親ユニット", prop: "parentOrganization"},
+      {label: "サブユニット", prop: "subOrganization"},
+    ],
+    MusicEvent: [
+      {label: "演者 (声優)", prop: "actor"},
+      {label: "会場", prop: "location"},
+      {label: "セットリスト", prop: "workPerformed"},
+    ],
+    TVSeries: [
+      {label: "声優", prop: "actor"},
+      {label: "キャラクター", prop: "character"},
+      {label: "ライブイベント", prop: "recordedAt"},
+      {label: "親ユニット", prop: "musicBy"},
+    ],
+    Place: [
+      {label: "開催イベント", prop: "subjectOf"},
+    ],
+  };
 
-		members: SELECT`${v("memberName")}`
-			.WHERE`${ll("いきづらい部")} ${schema("member")} ${v("m")} .`
-			.WHERE`${v("m")} ${schema("name")} ${v("memberName")} .`
-			.build(),
+  function buildSingleQuery(type, conditions) {
+    let q = SELECT`${v("name")}`.WHERE`${v("s")} a ${schema(type)} .`;
+    for (const {prop, value} of conditions) {
+      q = q.WHERE`${v("s")} ${schema(prop)} ${ll(value)} .`;
+    }
+    q = q.WHERE`${v("s")} ${schema("name")} ${v("name")} .`;
+    return q.build();
+  }
 
-		cast: SELECT`${v("charName")} ${v("castName")}`
-			.WHERE`${ll("イキヅライブ-lovelive-bluebird")} ${schema("character")} ${v("char")} .`
-			.WHERE`${ll("イキヅライブ-lovelive-bluebird")} ${schema("actor")} ${v("cast")} .`
-			.WHERE`${v("char")} ${schema("name")} ${v("charName")} .`
-			.WHERE`${v("cast")} ${schema("name")} ${v("castName")} .`
-			.WHERE`${v("char")} ${schema("relatedTo")} ${v("cast")} .`
-			.build(),
+  function buildQueries(type, conditions) {
+    if (type === "Music") {
+      return [
+        buildSingleQuery("MusicRecording", conditions),
+        buildSingleQuery("MusicAlbum", conditions),
+      ];
+    }
+    return [buildSingleQuery(type, conditions)];
+  }
 
-		live: SELECT`${v("songName")}`
-			.WHERE`${ll("what-is-my-l")} ${schema("workPerformed")} ${v("song")} .`
-			.WHERE`${v("song")} ${schema("name")} ${v("songName")} .`
-			.build(),
+  function getConditions() {
+    return [...document.querySelectorAll(".condition")].map((row) => ({
+      prop: row.querySelector(".prop").value,
+      value: row.querySelector(".val").value,
+    }));
+  }
 
-		units: SELECT`${v("personName")} ${v("unitName")}`
-			.WHERE`${v("p")} a ${schema("Person")} ; ${schema("name")} ${v("personName")} ; ${schema("memberOf")} ${v("unit")} .`
-			.WHERE`${v("unit")} ${schema("name")} ${v("unitName")} .`
-			.ORDER()
-			.BY(v("personName"))
-			.build(),
-	};
+  function updateSparql() {
+    const type = document.getElementById("type").value;
+    if (!type) return;
+    const conditions = getConditions();
+    if (conditions.some((c) => !c.value)) return;
+    document.getElementById("sparql").value = buildQueries(type, conditions).join("\n\n");
+  }
 
-	document.getElementById("examples").addEventListener("change", (e) => {
-		const key = e.target.value;
-		if (key && QUERIES[key]) {
-			document.getElementById("query").value = QUERIES[key];
-		}
-	});
+  async function fetchSparql(query) {
+    const res = await fetch("/api/sparql", {
+      method: "POST",
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify({query}),
+    });
+    return res.json();
+  }
 
-	document.getElementById("query").value = QUERIES.persons;
+  async function fetchValues(type, prop) {
+    const types = type === "Music" ? ["MusicRecording", "MusicAlbum"] : [type];
+    const all = [];
+    for (const t of types) {
+      const query = SELECT`${v("val")} ${v("name")}`
+        .WHERE`${v("s")} a ${schema(t)} ; ${schema(prop)} ${v("val")} .`
+        .WHERE`${v("val")} ${schema("name")} ${v("name")} .`
+        .ORDER().BY(v("name"))
+        .build();
+      const {results} = await fetchSparql(query);
+      all.push(...results);
+    }
+    const seen = new Set();
+    return all
+      .filter((r) => {if (seen.has(r.val)) return false; seen.add(r.val); return true;})
+      .map((r) => ({id: r.val.replace("https://ll-wiki.local/", ""), name: r.name}));
+  }
 
-	document.getElementById("run").addEventListener("click", async () => {
-		const query = document.getElementById("query").value.trim();
-		const status = document.getElementById("status");
-		const result = document.getElementById("result");
+  function addConditionRow(type, props) {
+    const div = document.createElement("div");
+    div.className = "condition";
 
-		status.textContent = "実行中...";
-		result.innerHTML = "";
+    const propSel = document.createElement("select");
+    propSel.className = "prop";
+    for (const {label, prop} of props) {
+      const opt = document.createElement("option");
+      opt.value = prop;
+      opt.textContent = label;
+      propSel.appendChild(opt);
+    }
 
-		try {
-			const res = await fetch("/api/sparql", {
-				method: "POST",
-				headers: { "Content-Type": "application/json" },
-				body: JSON.stringify({ query }),
-			});
+    const valSel = document.createElement("select");
+    valSel.className = "val";
 
-			const { vars, results, error } = await res.json();
+    const loadValues = async () => {
+      valSel.innerHTML = "<option value=''>読み込み中...</option>";
+      valSel.disabled = true;
+      const values = await fetchValues(type, propSel.value);
+      valSel.innerHTML = "<option value=''>-- 選択 --</option>";
+      for (const {id, name} of values) {
+        const opt = document.createElement("option");
+        opt.value = id;
+        opt.textContent = name;
+        valSel.appendChild(opt);
+      }
+      valSel.disabled = false;
+      updateSparql();
+    };
 
-			if (error) {
-				status.textContent = `エラー: ${error}`;
-				return;
-			}
+    const del = document.createElement("button");
+    del.type = "button";
+    del.textContent = "削除";
+    del.addEventListener("click", () => {
+      div.remove();
+      updateSparql();
+    });
 
-			if (results.length === 0) {
-				status.textContent = "結果なし";
-				return;
-			}
+    propSel.addEventListener("change", loadValues);
+    valSel.addEventListener("change", updateSparql);
 
-			const table = document.createElement("table");
-			const thead = document.createElement("thead");
-			const headerRow = document.createElement("tr");
-			for (const v of vars) {
-				const th = document.createElement("th");
-				th.textContent = v;
-				headerRow.appendChild(th);
-			}
-			thead.appendChild(headerRow);
-			table.appendChild(thead);
+    div.appendChild(propSel);
+    div.appendChild(valSel);
+    div.appendChild(del);
+    document.getElementById("conditions").appendChild(div);
+    loadValues();
+  }
 
-			const tbody = document.createElement("tbody");
-			for (const row of results) {
-				const tr = document.createElement("tr");
-				for (const v of vars) {
-					const td = document.createElement("td");
-					td.textContent = row[v] ?? "";
-					tr.appendChild(td);
-				}
-				tbody.appendChild(tr);
-			}
-			table.appendChild(tbody);
+  async function runQueries(queries) {
+    const status = document.getElementById("status");
+    const result = document.getElementById("result");
 
-			result.appendChild(table);
-			status.textContent = `${results.length} 件`;
-		} catch (err) {
-			status.textContent = `エラー: ${err.message}`;
-		}
-	});
+    status.textContent = "実行中...";
+    result.innerHTML = "";
+
+    try {
+      const allResults = [];
+      let vars = [];
+      for (const query of queries) {
+        const {vars: v, results, error} = await fetchSparql(query);
+        if (error) throw new Error(error);
+        vars = v;
+        allResults.push(...results);
+      }
+
+      const seen = new Set();
+      const deduped = allResults.filter((r) => {
+        const key = vars.map((col) => r[col]).join("|");
+        if (seen.has(key)) return false;
+        seen.add(key);
+        return true;
+      });
+
+      if (deduped.length === 0) {
+        status.textContent = "結果なし";
+        return;
+      }
+
+      const table = document.createElement("table");
+      const thead = document.createElement("thead");
+      const headerRow = document.createElement("tr");
+      for (const col of vars) {
+        const th = document.createElement("th");
+        th.textContent = col;
+        headerRow.appendChild(th);
+      }
+      thead.appendChild(headerRow);
+      table.appendChild(thead);
+
+      const tbody = document.createElement("tbody");
+      for (const row of deduped) {
+        const tr = document.createElement("tr");
+        for (const col of vars) {
+          const td = document.createElement("td");
+          td.textContent = row[col] ?? "";
+          tr.appendChild(td);
+        }
+        tbody.appendChild(tr);
+      }
+      table.appendChild(tbody);
+      result.appendChild(table);
+      status.textContent = `${deduped.length} 件`;
+    } catch (err) {
+      status.textContent = `エラー: ${err.message}`;
+    }
+  }
+
+  document.getElementById("type").addEventListener("change", (e) => {
+    const type = e.target.value;
+    document.getElementById("conditions").innerHTML = "";
+    document.getElementById("add").disabled = !type;
+    document.getElementById("run").disabled = !type;
+    if (type) updateSparql();
+  });
+
+  document.getElementById("add").addEventListener("click", () => {
+    const type = document.getElementById("type").value;
+    addConditionRow(type, PROPERTIES[type]);
+  });
+
+  document.getElementById("run").addEventListener("click", () => {
+    const type = document.getElementById("type").value;
+    if (!type) return;
+    const conditions = getConditions();
+    if (conditions.some((c) => !c.value)) {
+      document.getElementById("status").textContent = "エラー: 値が選択されていない条件があります";
+      return;
+    }
+    runQueries(buildQueries(type, conditions));
+  });
+
+  document.getElementById("direct-run").addEventListener("click", () => {
+    const query = document.getElementById("sparql").value.trim();
+    if (query) runQueries([query]);
+  });
 </script>
