@@ -2,7 +2,7 @@
 "@context": "https://schema.org"
 "@id": "love-you-save-the-earth"
 "@type": "MusicRecording"
-"name": "LOVE YOU Save the EARTH!!"
+"name": "LOVE♡YOU♡Save the EARTH!!"
 ---
 
 # LOVE YOU Save the EARTH!!

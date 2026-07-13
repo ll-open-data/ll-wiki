@@ -1,9 +1,0 @@
-{
-  "@context": "https://schema.org",
-  "@id": "京王アリーナtokyo",
-  "@type": "Place",
-  "name": "京王アリーナTOKYO",
-  "subjectOf": {
-    "@id": "reply-to-l"
-  }
-}

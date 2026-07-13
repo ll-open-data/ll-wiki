@@ -45,6 +45,9 @@ site.process([".html"], (pages) => {
 
 			if (found) {
 				link.setAttribute("href", found.data.url);
+				if (found.data.name) {
+					link.textContent = found.data.name as string;
+				}
 			} else {
 				link.setAttribute("title", "This page does not exist");
 				link.classList.add("broken-link");

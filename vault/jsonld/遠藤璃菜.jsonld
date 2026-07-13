@@ -1,9 +1,0 @@
-{
-  "@context": "https://schema.org",
-  "@id": "遠藤璃菜",
-  "@type": "Person",
-  "name": "遠藤璃菜",
-  "relatedTo": {
-    "@id": "麻布麻衣"
-  }
-}
