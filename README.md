@@ -2,6 +2,8 @@
 
 ラブライブ！シリーズに関する情報を集約し、SPARQL および LLM エージェントによる検索を可能にする構造化 Wiki です。
 
+議論・修正リクエストはこちらから: https://discord.gg/bUvhuJtPYb
+
 ## 概要
 
 - コンテンツは Markdown + YAML フロントマターで記述
