@@ -1,0 +1,136 @@
+<h1>SPARQL クエリ</h1>
+
+<p>
+	エンドポイント: <code>POST /api/sparql</code> <code>{ "query": "..." }</code><br />
+	PREFIX: <code>ll: &lt;https://ll-wiki.local/&gt;</code> /
+	<code>schema: &lt;https://schema.org/&gt;</code>
+</p>
+
+<label for="examples">クエリ例</label>
+<select id="examples">
+	<option value="">-- 選択 --</option>
+	<option value="persons">全 Person の一覧</option>
+	<option value="members">いきづらい部のメンバー</option>
+	<option value="cast">キャラクターとキャストの対応</option>
+	<option value="live">ライブで披露された曲 (What is my L?)</option>
+	<option value="units">キャラクターが所属するユニット</option>
+</select>
+
+<label for="query">クエリ</label>
+<textarea id="query" rows="10" style="width:100%;font-family:monospace"></textarea>
+
+<button type="button" id="run">実行</button>
+
+<div id="status" style="margin-block:0.5rem"></div>
+<div id="result"></div>
+
+<script type="module">
+	import namespace from "https://esm.sh/@rdfjs/namespace";
+	// https://github.com/tpluscode/sparql-builder
+	import { SELECT } from "https://esm.sh/@tpluscode/sparql-builder";
+	import { DataFactory } from "https://esm.sh/rdf-data-factory";
+
+	const df = new DataFactory();
+	const schema = namespace("https://schema.org/");
+	const ll = (id) => df.namedNode(`https://ll-wiki.local/${id}`);
+	const v = (name) => df.variable(name);
+
+	const QUERIES = {
+		persons: SELECT`${v("name")}`
+			.WHERE`${v("s")} a ${schema("Person")} ; ${schema("name")} ${v("name")} .`
+			.ORDER()
+			.BY(v("name"))
+			.build(),
+
+		members: SELECT`${v("memberName")}`
+			.WHERE`${ll("いきづらい部")} ${schema("member")} ${v("m")} .`
+			.WHERE`${v("m")} ${schema("name")} ${v("memberName")} .`
+			.build(),
+
+		cast: SELECT`${v("charName")} ${v("castName")}`
+			.WHERE`${ll("イキヅライブ-lovelive-bluebird")} ${schema("character")} ${v("char")} .`
+			.WHERE`${ll("イキヅライブ-lovelive-bluebird")} ${schema("actor")} ${v("cast")} .`
+			.WHERE`${v("char")} ${schema("name")} ${v("charName")} .`
+			.WHERE`${v("cast")} ${schema("name")} ${v("castName")} .`
+			.WHERE`${v("char")} ${schema("relatedTo")} ${v("cast")} .`
+			.build(),
+
+		live: SELECT`${v("songName")}`
+			.WHERE`${ll("what-is-my-l")} ${schema("workPerformed")} ${v("song")} .`
+			.WHERE`${v("song")} ${schema("name")} ${v("songName")} .`
+			.build(),
+
+		units: SELECT`${v("personName")} ${v("unitName")}`
+			.WHERE`${v("p")} a ${schema("Person")} ; ${schema("name")} ${v("personName")} ; ${schema("memberOf")} ${v("unit")} .`
+			.WHERE`${v("unit")} ${schema("name")} ${v("unitName")} .`
+			.ORDER()
+			.BY(v("personName"))
+			.build(),
+	};
+
+	document.getElementById("examples").addEventListener("change", (e) => {
+		const key = e.target.value;
+		if (key && QUERIES[key]) {
+			document.getElementById("query").value = QUERIES[key];
+		}
+	});
+
+	document.getElementById("query").value = QUERIES.persons;
+
+	document.getElementById("run").addEventListener("click", async () => {
+		const query = document.getElementById("query").value.trim();
+		const status = document.getElementById("status");
+		const result = document.getElementById("result");
+
+		status.textContent = "実行中...";
+		result.innerHTML = "";
+
+		try {
+			const res = await fetch("/api/sparql", {
+				method: "POST",
+				headers: { "Content-Type": "application/json" },
+				body: JSON.stringify({ query }),
+			});
+
+			const { vars, results, error } = await res.json();
+
+			if (error) {
+				status.textContent = `エラー: ${error}`;
+				return;
+			}
+
+			if (results.length === 0) {
+				status.textContent = "結果なし";
+				return;
+			}
+
+			const table = document.createElement("table");
+			const thead = document.createElement("thead");
+			const headerRow = document.createElement("tr");
+			for (const v of vars) {
+				const th = document.createElement("th");
+				th.textContent = v;
+				headerRow.appendChild(th);
+			}
+			thead.appendChild(headerRow);
+			table.appendChild(thead);
+
+			const tbody = document.createElement("tbody");
+			for (const row of results) {
+				const tr = document.createElement("tr");
+				for (const v of vars) {
+					const td = document.createElement("td");
+					td.textContent = row[v] ?? "";
+					tr.appendChild(td);
+				}
+				tbody.appendChild(tr);
+			}
+			table.appendChild(tbody);
+
+			result.appendChild(table);
+			status.textContent = `${results.length} 件`;
+		} catch (err) {
+			status.textContent = `エラー: ${err.message}`;
+		}
+	});
+</script>

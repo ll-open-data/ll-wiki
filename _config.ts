@@ -4,6 +4,7 @@ import wikilinks from "lume_markdown_plugins/wikilinks.ts";
 
 const site = lume({ src: "./vault" });
 site.add("jsonld");
+site.loadPages([".html"]);
 
 site.preprocess([".md"], (pages) => {
 	for (const page of pages) {

@@ -1,0 +1,1271 @@
+{
+	"@context": {
+		"@vocab": "https://schema.org/",
+		"@base": "https://ll-wiki.local/"
+	},
+	"@graph": [
+		{
+			"@id": "幕張イベントホール",
+			"@type": "Place",
+			"name": "幕張イベントホール",
+			"subjectOf": {
+				"@id": "what-is-my-l"
+			}
+		},
+		{
+			"@id": "京王アリーナtokyo",
+			"@type": "Place",
+			"name": "京王アリーナTOKYO",
+			"subjectOf": {
+				"@id": "reply-to-l"
+			}
+		},
+		{
+			"@id": "ジェットスターター",
+			"@type": "MusicRecording",
+			"name": "ジェットスターター",
+			"byArtist": {
+				"@id": "五桐玲"
+			},
+			"inAlbum": {
+				"@id": "いつか碧"
+			},
+			"subjectOf": {
+				"@id": "what-is-my-l"
+			}
+		},
+		{
+			"@id": "ひっさつマイマイモード",
+			"@type": "MusicRecording",
+			"name": "ひっさつマイマイモード",
+			"byArtist": {
+				"@id": "麻布麻衣"
+			},
+			"inAlbum": {
+				"@id": "public-style"
+			},
+			"subjectOf": {
+				"@id": "what-is-my-l"
+			}
+		},
+		{
+			"@id": "first-ride",
+			"@type": "MusicRecording",
+			"name": "First Ride",
+			"byArtist": {
+				"@id": "駒形花火"
+			},
+			"inAlbum": {
+				"@id": "hibana-火花"
+			},
+			"subjectOf": {
+				"@id": "what-is-my-l"
+			}
+		},
+		{
+			"@id": "センチメートル-ランデブー",
+			"@type": "MusicRecording",
+			"name": "センチメートル・ランデブー",
+			"byArtist": {
+				"@id": "調布のりこ"
+			},
+			"inAlbum": {
+				"@id": "恋のワンタイムパスワード"
+			},
+			"subjectOf": {
+				"@id": "what-is-my-l"
+			}
+		},
+		{
+			"@id": "マジカルレシピ-シルブプレ",
+			"@type": "MusicRecording",
+			"name": "マジカルレシピ・シルブプレ！",
+			"byArtist": {
+				"@id": "金澤奇跡"
+			},
+			"inAlbum": {
+				"@id": "homerun-queen"
+			},
+			"subjectOf": {
+				"@id": "what-is-my-l"
+			}
+		},
+		{
+			"@id": "クラリトブライト",
+			"@type": "MusicRecording",
+			"name": "クラリトブライト",
+			"byArtist": {
+				"@id": "此花輝夜"
+			},
+			"inAlbum": {
+				"@id": "キミは夜のポラリス"
+			},
+			"subjectOf": {
+				"@id": "what-is-my-l"
+			}
+		},
+		{
+			"@id": "二人はいつでも-happy-end",
+			"@type": "MusicRecording",
+			"name": "二人はいつでも Happy End",
+			"byArtist": {
+				"@id": "春宮ゆくり"
+			},
+			"inAlbum": {
+				"@id": "pray-for-love"
+			},
+			"subjectOf": {
+				"@id": "what-is-my-l"
+			}
+		},
+		{
+			"@id": "love-you-save-the-earth",
+			"@type": "MusicRecording",
+			"name": "LOVE♡YOU♡Save the EARTH!!",
+			"byArtist": {
+				"@id": "山田真緑"
+			},
+			"inAlbum": {
+				"@id": "little-green委員会"
+			},
+			"subjectOf": {
+				"@id": "what-is-my-l"
+			}
+		},
+		{
+			"@id": "ヒミツミチ",
+			"@type": "MusicRecording",
+			"name": "ヒミツミチ",
+			"byArtist": {
+				"@id": "いきづらい部"
+			},
+			"inAlbum": {
+				"@id": "what-is-my-life"
+			},
+			"subjectOf": {
+				"@id": "what-is-my-l"
+			}
+		},
+		{
+			"@id": "super-summer-sensation",
+			"@type": "MusicRecording",
+			"name": "SUPER SUMMER SENSATION!!",
+			"byArtist": {
+				"@id": "いきづらい部"
+			},
+			"inAlbum": {
+				"@id": "dou-da-doing"
+			},
+			"subjectOf": {
+				"@id": "what-is-my-l"
+			}
+		},
+		{
+			"@id": "オドルポルカ",
+			"@type": "MusicRecording",
+			"name": "オドルポルカ",
+			"byArtist": {
+				"@id": "高橋ポルカ"
+			},
+			"inAlbum": {
+				"@id": "浅草guilty-girlの歌"
+			},
+			"subjectOf": {
+				"@id": "what-is-my-l"
+			}
+		},
+		{
+			"@id": "trick-or-toxic",
+			"@type": "MusicRecording",
+			"name": "Trick or Toxic",
+			"byArtist": {
+				"@id": "佐々木翔音"
+			},
+			"inAlbum": {
+				"@id": "イキタクナイevery-day"
+			},
+			"subjectOf": {
+				"@id": "what-is-my-l"
+			}
+		},
+		{
+			"@id": "regain-again-llllove",
+			"@type": "MusicRecording",
+			"name": "REGAIN AGAIN LLLLOVE",
+			"byArtist": {
+				"@id": "いきづらい部"
+			},
+			"inAlbum": {
+				"@id": "dou-da-doing"
+			},
+			"subjectOf": {
+				"@id": "what-is-my-l"
+			}
+		},
+		{
+			"@id": "既読待ちlovers",
+			"@type": "MusicGroup",
+			"name": "既読待ちLovers",
+			"parentOrganization": {
+				"@id": "いきづらい部"
+			},
+			"member": [
+				{
+					"@id": "麻布麻衣"
+				},
+				{
+					"@id": "此花輝夜"
+				},
+				{
+					"@id": "佐々木翔音"
+				}
+			],
+			"album": {
+				"@id": "tap-tap-tappin"
+			}
+		},
+		{
+			"@id": "いきづらい部",
+			"@type": "MusicGroup",
+			"name": "いきづらい部!",
+			"member": [
+				{
+					"@id": "高橋ポルカ"
+				},
+				{
+					"@id": "麻布麻衣"
+				},
+				{
+					"@id": "五桐玲"
+				},
+				{
+					"@id": "駒形花火"
+				},
+				{
+					"@id": "金澤奇跡"
+				},
+				{
+					"@id": "調布のりこ"
+				},
+				{
+					"@id": "春宮ゆくり"
+				},
+				{
+					"@id": "此花輝夜"
+				},
+				{
+					"@id": "山田真緑"
+				},
+				{
+					"@id": "佐々木翔音"
+				}
+			],
+			"subOrganization": [
+				{
+					"@id": "chaki"
+				},
+				{
+					"@id": "mi-nori-tea"
+				},
+				{
+					"@id": "plumina"
+				},
+				{
+					"@id": "sh1on"
+				},
+				{
+					"@id": "こーるみー"
+				},
+				{
+					"@id": "既読待ちlovers"
+				},
+				{
+					"@id": "恋文乙女純情派"
+				}
+			],
+			"album": [
+				{
+					"@id": "what-is-my-life"
+				},
+				{
+					"@id": "dou-da-doing"
+				}
+			]
+		},
+		{
+			"@id": "恋文乙女純情派",
+			"@type": "MusicGroup",
+			"name": "恋文乙女純情派",
+			"parentOrganization": {
+				"@id": "いきづらい部"
+			},
+			"member": [
+				{
+					"@id": "駒形花火"
+				},
+				{
+					"@id": "調布のりこ"
+				},
+				{
+					"@id": "春宮ゆくり"
+				},
+				{
+					"@id": "山田真緑"
+				}
+			],
+			"album": {
+				"@id": "未完成なラブレター"
+			}
+		},
+		{
+			"@id": "chaki",
+			"@type": "MusicGroup",
+			"name": "CHAKI!",
+			"parentOrganization": {
+				"@id": "いきづらい部"
+			},
+			"memberOf": {
+				"@id": "浅草サテライト"
+			},
+			"member": [
+				{
+					"@id": "高橋ポルカ"
+				},
+				{
+					"@id": "麻布麻衣"
+				},
+				{
+					"@id": "五桐玲"
+				},
+				{
+					"@id": "駒形花火"
+				}
+			],
+			"album": {
+				"@id": "凸凹quartet"
+			}
+		},
+		{
+			"@id": "plumina",
+			"@type": "MusicGroup",
+			"name": "Plumina",
+			"parentOrganization": {
+				"@id": "いきづらい部"
+			},
+			"memberOf": {
+				"@id": "梅田サテライト"
+			},
+			"member": [
+				{
+					"@id": "春宮ゆくり"
+				},
+				{
+					"@id": "此花輝夜"
+				},
+				{
+					"@id": "山田真緑"
+				}
+			],
+			"album": {
+				"@id": "daitan-party-time"
+			}
+		},
+		{
+			"@id": "sh1on",
+			"@type": "MusicGroup",
+			"name": "SH1ON",
+			"parentOrganization": {
+				"@id": "いきづらい部"
+			},
+			"memberOf": {
+				"@id": "仙台サテライト"
+			},
+			"member": {
+				"@id": "佐々木翔音"
+			},
+			"album": {
+				"@id": "silent-stella"
+			}
+		},
+		{
+			"@id": "こーるみー",
+			"@type": "MusicGroup",
+			"name": "こーるみー!!!",
+			"parentOrganization": {
+				"@id": "いきづらい部"
+			},
+			"member": [
+				{
+					"@id": "高橋ポルカ"
+				},
+				{
+					"@id": "五桐玲"
+				},
+				{
+					"@id": "金澤奇跡"
+				}
+			],
+			"album": {
+				"@id": "全力calling-i-love-you"
+			}
+		},
+		{
+			"@id": "mi-nori-tea",
+			"@type": "MusicGroup",
+			"name": "Mi×Nori=Tea",
+			"parentOrganization": {
+				"@id": "いきづらい部"
+			},
+			"memberOf": {
+				"@id": "福井サテライト"
+			},
+			"member": [
+				{
+					"@id": "金澤奇跡"
+				},
+				{
+					"@id": "調布のりこ"
+				}
+			],
+			"album": {
+				"@id": "シンメトリー"
+			}
+		},
+		{
+			"@id": "what-is-my-l",
+			"@type": "MusicEvent",
+			"name": "いきづらい部！ 1st LIVE ～ What is my L ? ～",
+			"location": {
+				"@id": "幕張イベントホール"
+			},
+			"workPerformed": [
+				{
+					"@id": "what-is-my-life"
+				},
+				{
+					"@id": "浅草guilty-girlの歌"
+				},
+				{
+					"@id": "public-style"
+				},
+				{
+					"@id": "いつか碧"
+				},
+				{
+					"@id": "hibana-火花"
+				},
+				{
+					"@id": "凸凹quartet"
+				},
+				{
+					"@id": "pray-for-love"
+				},
+				{
+					"@id": "キミは夜のポラリス"
+				},
+				{
+					"@id": "little-green委員会"
+				},
+				{
+					"@id": "daitan-party-time"
+				},
+				{
+					"@id": "homerun-queen"
+				},
+				{
+					"@id": "恋のワンタイムパスワード"
+				},
+				{
+					"@id": "イキタクナイevery-day"
+				},
+				{
+					"@id": "シンメトリー"
+				},
+				{
+					"@id": "silent-stella"
+				},
+				{
+					"@id": "regain-again-llllove"
+				},
+				{
+					"@id": "オドルポルカ"
+				},
+				{
+					"@id": "trick-or-toxic"
+				},
+				{
+					"@id": "センチメートル-ランデブー"
+				},
+				{
+					"@id": "love-you-save-the-earth"
+				},
+				{
+					"@id": "クラリトブライト"
+				},
+				{
+					"@id": "マジカルレシピ-シルブプレ"
+				},
+				{
+					"@id": "二人はいつでも-happy-end"
+				},
+				{
+					"@id": "first-ride"
+				},
+				{
+					"@id": "ジェットスターター"
+				},
+				{
+					"@id": "ひっさつマイマイモード"
+				},
+				{
+					"@id": "ヒミツミチ"
+				},
+				{
+					"@id": "dou-da-doing"
+				},
+				{
+					"@id": "what-is-my-life"
+				}
+			]
+		},
+		{
+			"@id": "reply-to-l",
+			"@type": "MusicEvent",
+			"name": "いきづらい部！ 2nd LIVE Dou-Da? DOING! ～Reply to L～",
+			"location": {
+				"@id": "京王アリーナtokyo"
+			}
+		},
+		{
+			"@id": "イキヅライブ-lovelive-bluebird",
+			"@type": "TVSeries",
+			"name": "イキヅライブ! LOVELIVE! BLUEBIRD",
+			"musicBy": {
+				"@id": "いきづらい部"
+			},
+			"character": [
+				{
+					"@id": "高橋ポルカ"
+				},
+				{
+					"@id": "麻布麻衣"
+				},
+				{
+					"@id": "五桐玲"
+				},
+				{
+					"@id": "駒形花火"
+				},
+				{
+					"@id": "金澤奇跡"
+				},
+				{
+					"@id": "調布のりこ"
+				},
+				{
+					"@id": "春宮ゆくり"
+				},
+				{
+					"@id": "此花輝夜"
+				},
+				{
+					"@id": "山田真緑"
+				},
+				{
+					"@id": "佐々木翔音"
+				}
+			],
+			"actor": [
+				{
+					"@id": "綾咲穂音"
+				},
+				{
+					"@id": "遠藤璃菜"
+				},
+				{
+					"@id": "宮野芹"
+				},
+				{
+					"@id": "藤野こころ"
+				},
+				{
+					"@id": "坂野愛羽"
+				},
+				{
+					"@id": "瀬古梨愛"
+				},
+				{
+					"@id": "奥村優季"
+				},
+				{
+					"@id": "天沢朱音"
+				},
+				{
+					"@id": "小戸森穂花"
+				},
+				{
+					"@id": "涼ノ瀬葵音"
+				}
+			],
+			"recordedAt": [
+				{
+					"@id": "what-is-my-l"
+				},
+				{
+					"@id": "reply-to-l"
+				}
+			]
+		},
+		{
+			"@id": "little-green委員会",
+			"@type": "MusicAlbum",
+			"name": "Little Green委員会",
+			"byArtist": {
+				"@id": "山田真緑"
+			},
+			"track": {
+				"@id": "love-you-save-the-earth"
+			},
+			"subjectOf": {
+				"@id": "what-is-my-l"
+			}
+		},
+		{
+			"@id": "public-style",
+			"@type": "MusicAlbum",
+			"name": "Public Style",
+			"byArtist": {
+				"@id": "麻布麻衣"
+			},
+			"track": {
+				"@id": "ひっさつマイマイモード"
+			},
+			"subjectOf": {
+				"@id": "what-is-my-l"
+			}
+		},
+		{
+			"@id": "恋のワンタイムパスワード",
+			"@type": "MusicAlbum",
+			"name": "恋のワンタイムパスワード",
+			"byArtist": {
+				"@id": "調布のりこ"
+			},
+			"track": {
+				"@id": "センチメートル-ランデブー"
+			},
+			"subjectOf": {
+				"@id": "what-is-my-l"
+			}
+		},
+		{
+			"@id": "pray-for-love",
+			"@type": "MusicAlbum",
+			"name": "Pray for love",
+			"byArtist": {
+				"@id": "春宮ゆくり"
+			},
+			"track": {
+				"@id": "二人はいつでも-happy-end"
+			},
+			"subjectOf": {
+				"@id": "what-is-my-l"
+			}
+		},
+		{
+			"@id": "シンメトリー",
+			"@type": "MusicAlbum",
+			"name": "シンメトリー",
+			"byArtist": {
+				"@id": "mi-nori-tea"
+			},
+			"subjectOf": {
+				"@id": "what-is-my-l"
+			}
+		},
+		{
+			"@id": "homerun-queen",
+			"@type": "MusicAlbum",
+			"name": "HomeRun Queen!!",
+			"byArtist": {
+				"@id": "金澤奇跡"
+			},
+			"track": {
+				"@id": "マジカルレシピ-シルブプレ"
+			},
+			"subjectOf": {
+				"@id": "what-is-my-l"
+			}
+		},
+		{
+			"@id": "hibana-火花",
+			"@type": "MusicAlbum",
+			"name": "HIBANA―火花―",
+			"byArtist": {
+				"@id": "駒形花火"
+			},
+			"track": {
+				"@id": "first-ride"
+			},
+			"subjectOf": {
+				"@id": "what-is-my-l"
+			}
+		},
+		{
+			"@id": "いつか碧",
+			"@type": "MusicAlbum",
+			"name": "いつか碧",
+			"byArtist": {
+				"@id": "五桐玲"
+			},
+			"track": {
+				"@id": "ジェットスターター"
+			},
+			"subjectOf": {
+				"@id": "what-is-my-l"
+			}
+		},
+		{
+			"@id": "凸凹quartet",
+			"@type": "MusicAlbum",
+			"name": "凸凹Quartet",
+			"byArtist": {
+				"@id": "chaki"
+			},
+			"subjectOf": {
+				"@id": "what-is-my-l"
+			}
+		},
+		{
+			"@id": "what-is-my-life",
+			"@type": "MusicAlbum",
+			"name": "What is my LIFE?",
+			"byArtist": {
+				"@id": "いきづらい部"
+			},
+			"track": {
+				"@id": "ヒミツミチ"
+			},
+			"subjectOf": {
+				"@id": "what-is-my-l"
+			}
+		},
+		{
+			"@id": "silent-stella",
+			"@type": "MusicAlbum",
+			"name": "Silent Stella",
+			"byArtist": {
+				"@id": "sh1on"
+			},
+			"subjectOf": {
+				"@id": "what-is-my-l"
+			}
+		},
+		{
+			"@id": "未完成なラブレター",
+			"@type": "MusicAlbum",
+			"name": "未完成なラブレター",
+			"byArtist": {
+				"@id": "恋文乙女純情派"
+			}
+		},
+		{
+			"@id": "tap-tap-tappin",
+			"@type": "MusicAlbum",
+			"name": "tap tap tappin'!!",
+			"byArtist": {
+				"@id": "既読待ちlovers"
+			}
+		},
+		{
+			"@id": "キミは夜のポラリス",
+			"@type": "MusicAlbum",
+			"name": "キミは夜のポラリス",
+			"byArtist": {
+				"@id": "此花輝夜"
+			},
+			"track": {
+				"@id": "クラリトブライト"
+			},
+			"subjectOf": {
+				"@id": "what-is-my-l"
+			}
+		},
+		{
+			"@id": "浅草guilty-girlの歌",
+			"@type": "MusicAlbum",
+			"name": "浅草Guilty Girlの歌",
+			"byArtist": {
+				"@id": "高橋ポルカ"
+			},
+			"track": {
+				"@id": "オドルポルカ"
+			},
+			"subjectOf": {
+				"@id": "what-is-my-l"
+			}
+		},
+		{
+			"@id": "イキタクナイevery-day",
+			"@type": "MusicAlbum",
+			"name": "イキタクナイevery day",
+			"byArtist": {
+				"@id": "佐々木翔音"
+			},
+			"track": {
+				"@id": "trick-or-toxic"
+			},
+			"subjectOf": {
+				"@id": "what-is-my-l"
+			}
+		},
+		{
+			"@id": "dou-da-doing",
+			"@type": "MusicAlbum",
+			"name": "Dou-Da? DOING!",
+			"byArtist": {
+				"@id": "いきづらい部"
+			},
+			"track": [
+				{
+					"@id": "regain-again-llllove"
+				},
+				{
+					"@id": "super-summer-sensation"
+				}
+			],
+			"subjectOf": {
+				"@id": "what-is-my-l"
+			}
+		},
+		{
+			"@id": "daitan-party-time",
+			"@type": "MusicAlbum",
+			"name": "Daitan Party Time",
+			"byArtist": {
+				"@id": "plumina"
+			},
+			"subjectOf": {
+				"@id": "what-is-my-l"
+			}
+		},
+		{
+			"@id": "全力calling-i-love-you",
+			"@type": "MusicAlbum",
+			"name": "全力Calling!! I LOVE YOU!!",
+			"byArtist": {
+				"@id": "こーるみー"
+			}
+		},
+		{
+			"@id": "梅田サテライト",
+			"@type": "EducationalOrganization",
+			"name": "梅田サテライト",
+			"memberOf": {
+				"@id": "イキヅライブ-lovelive-bluebird"
+			},
+			"member": [
+				{
+					"@id": "春宮ゆくり"
+				},
+				{
+					"@id": "此花輝夜"
+				},
+				{
+					"@id": "山田真緑"
+				}
+			],
+			"subOrganization": {
+				"@id": "plumina"
+			}
+		},
+		{
+			"@id": "浅草サテライト",
+			"@type": "EducationalOrganization",
+			"name": "浅草サテライト",
+			"memberOf": {
+				"@id": "イキヅライブ-lovelive-bluebird"
+			},
+			"member": [
+				{
+					"@id": "高橋ポルカ"
+				},
+				{
+					"@id": "麻布麻衣"
+				},
+				{
+					"@id": "五桐玲"
+				},
+				{
+					"@id": "駒形花火"
+				}
+			],
+			"subOrganization": {
+				"@id": "chaki"
+			}
+		},
+		{
+			"@id": "仙台サテライト",
+			"@type": "EducationalOrganization",
+			"name": "仙台サテライト",
+			"memberOf": {
+				"@id": "イキヅライブ-lovelive-bluebird"
+			},
+			"member": {
+				"@id": "佐々木翔音"
+			},
+			"subOrganization": {
+				"@id": "sh1on"
+			}
+		},
+		{
+			"@id": "福井サテライト",
+			"@type": "EducationalOrganization",
+			"name": "福井サテライト",
+			"memberOf": {
+				"@id": "イキヅライブ-lovelive-bluebird"
+			},
+			"member": [
+				{
+					"@id": "金澤奇跡"
+				},
+				{
+					"@id": "調布のりこ"
+				}
+			],
+			"subOrganization": {
+				"@id": "mi-nori-tea"
+			}
+		},
+		{
+			"@id": "遠藤璃菜",
+			"@type": "Person",
+			"name": "遠藤璃菜",
+			"relatedTo": {
+				"@id": "麻布麻衣"
+			}
+		},
+		{
+			"@id": "五桐玲",
+			"@type": "Person",
+			"name": "五桐玲",
+			"memberOf": [
+				{
+					"@id": "いきづらい部"
+				},
+				{
+					"@id": "chaki"
+				},
+				{
+					"@id": "こーるみー"
+				}
+			],
+			"affiliation": {
+				"@id": "浅草サテライト"
+			},
+			"relatedTo": {
+				"@id": "宮野芹"
+			},
+			"album": {
+				"@id": "いつか碧"
+			}
+		},
+		{
+			"@id": "奥村優季",
+			"@type": "Person",
+			"name": "奥村優季",
+			"relatedTo": {
+				"@id": "春宮ゆくり"
+			}
+		},
+		{
+			"@id": "宮野芹",
+			"@type": "Person",
+			"name": "宮野芹",
+			"relatedTo": {
+				"@id": "五桐玲"
+			}
+		},
+		{
+			"@id": "金澤奇跡",
+			"@type": "Person",
+			"name": "金澤奇跡",
+			"memberOf": [
+				{
+					"@id": "いきづらい部"
+				},
+				{
+					"@id": "mi-nori-tea"
+				},
+				{
+					"@id": "こーるみー"
+				}
+			],
+			"affiliation": {
+				"@id": "福井サテライト"
+			},
+			"relatedTo": {
+				"@id": "坂野愛羽"
+			},
+			"album": {
+				"@id": "homerun-queen"
+			}
+		},
+		{
+			"@id": "涼ノ瀬葵音",
+			"@type": "Person",
+			"name": "涼ノ瀬葵音",
+			"relatedTo": {
+				"@id": "佐々木翔音"
+			}
+		},
+		{
+			"@id": "春宮ゆくり",
+			"@type": "Person",
+			"name": "春宮ゆくり",
+			"memberOf": [
+				{
+					"@id": "いきづらい部"
+				},
+				{
+					"@id": "plumina"
+				},
+				{
+					"@id": "恋文乙女純情派"
+				}
+			],
+			"affiliation": {
+				"@id": "梅田サテライト"
+			},
+			"relatedTo": {
+				"@id": "奥村優季"
+			},
+			"album": {
+				"@id": "pray-for-love"
+			}
+		},
+		{
+			"@id": "麻布麻衣",
+			"@type": "Person",
+			"name": "麻布麻衣",
+			"memberOf": [
+				{
+					"@id": "いきづらい部"
+				},
+				{
+					"@id": "chaki"
+				},
+				{
+					"@id": "既読待ちlovers"
+				}
+			],
+			"affiliation": {
+				"@id": "浅草サテライト"
+			},
+			"relatedTo": {
+				"@id": "遠藤璃菜"
+			},
+			"album": {
+				"@id": "public-style"
+			}
+		},
+		{
+			"@id": "此花輝夜",
+			"@type": "Person",
+			"name": "此花輝夜",
+			"memberOf": [
+				{
+					"@id": "いきづらい部"
+				},
+				{
+					"@id": "plumina"
+				},
+				{
+					"@id": "既読待ちlovers"
+				}
+			],
+			"affiliation": {
+				"@id": "梅田サテライト"
+			},
+			"relatedTo": {
+				"@id": "天沢朱音"
+			},
+			"album": {
+				"@id": "キミは夜のポラリス"
+			}
+		},
+		{
+			"@id": "藤野こころ",
+			"@type": "Person",
+			"name": "藤野こころ",
+			"relatedTo": {
+				"@id": "駒形花火"
+			}
+		},
+		{
+			"@id": "天沢朱音",
+			"@type": "Person",
+			"name": "天沢朱音",
+			"relatedTo": {
+				"@id": "此花輝夜"
+			}
+		},
+		{
+			"@id": "調布のりこ",
+			"@type": "Person",
+			"name": "調布のりこ",
+			"memberOf": [
+				{
+					"@id": "いきづらい部"
+				},
+				{
+					"@id": "mi-nori-tea"
+				},
+				{
+					"@id": "恋文乙女純情派"
+				}
+			],
+			"affiliation": {
+				"@id": "福井サテライト"
+			},
+			"relatedTo": {
+				"@id": "瀬古梨愛"
+			},
+			"album": {
+				"@id": "恋のワンタイムパスワード"
+			}
+		},
+		{
+			"@id": "高橋ポルカ",
+			"@type": "Person",
+			"name": "高橋ポルカ",
+			"memberOf": [
+				{
+					"@id": "いきづらい部"
+				},
+				{
+					"@id": "chaki"
+				},
+				{
+					"@id": "こーるみー"
+				}
+			],
+			"affiliation": {
+				"@id": "浅草サテライト"
+			},
+			"relatedTo": {
+				"@id": "綾咲穂音"
+			},
+			"album": {
+				"@id": "浅草guilty-girlの歌"
+			}
+		},
+		{
+			"@id": "瀬古梨愛",
+			"@type": "Person",
+			"name": "瀬古梨愛",
+			"relatedTo": {
+				"@id": "調布のりこ"
+			}
+		},
+		{
+			"@id": "小戸森穂花",
+			"@type": "Person",
+			"name": "小戸森穂花",
+			"relatedTo": {
+				"@id": "山田真緑"
+			}
+		},
+		{
+			"@id": "綾咲穂音",
+			"@type": "Person",
+			"name": "綾咲穂音",
+			"relatedTo": {
+				"@id": "高橋ポルカ"
+			}
+		},
+		{
+			"@id": "山田真緑",
+			"@type": "Person",
+			"name": "山田真緑",
+			"memberOf": [
+				{
+					"@id": "いきづらい部"
+				},
+				{
+					"@id": "plumina"
+				},
+				{
+					"@id": "恋文乙女純情派"
+				}
+			],
+			"affiliation": {
+				"@id": "梅田サテライト"
+			},
+			"relatedTo": {
+				"@id": "小戸森穂花"
+			},
+			"album": {
+				"@id": "little-green委員会"
+			}
+		},
+		{
+			"@id": "佐々木翔音",
+			"@type": "Person",
+			"name": "佐々木翔音",
+			"memberOf": [
+				{
+					"@id": "いきづらい部"
+				},
+				{
+					"@id": "sh1on"
+				},
+				{
+					"@id": "既読待ちlovers"
+				}
+			],
+			"affiliation": {
+				"@id": "仙台サテライト"
+			},
+			"relatedTo": {
+				"@id": "涼ノ瀬葵音"
+			},
+			"album": {
+				"@id": "イキタクナイevery-day"
+			}
+		},
+		{
+			"@id": "坂野愛羽",
+			"@type": "Person",
+			"name": "坂野愛羽",
+			"relatedTo": {
+				"@id": "金澤奇跡"
+			}
+		},
+		{
+			"@id": "駒形花火",
+			"@type": "Person",
+			"name": "駒形花火",
+			"memberOf": [
+				{
+					"@id": "いきづらい部"
+				},
+				{
+					"@id": "chaki"
+				},
+				{
+					"@id": "恋文乙女純情派"
+				}
+			],
+			"affiliation": {
+				"@id": "浅草サテライト"
+			},
+			"relatedTo": {
+				"@id": "藤野こころ"
+			},
+			"album": {
+				"@id": "hibana-火花"
+			}
+		}
+	]
+}
