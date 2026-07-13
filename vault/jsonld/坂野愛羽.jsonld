@@ -1,0 +1,9 @@
+{
+	"@context": "https://schema.org",
+	"@id": "坂野愛羽",
+	"@type": "Person",
+	"name": "坂野愛羽",
+	"relatedTo": {
+		"@id": "金澤奇跡"
+	}
+}

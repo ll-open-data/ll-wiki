@@ -1,0 +1,15 @@
+{
+	"@context": "https://schema.org",
+	"@id": "homerun-queen",
+	"@type": "MusicAlbum",
+	"name": "HomeRun Queen!!",
+	"byArtist": {
+		"@id": "金澤奇跡"
+	},
+	"track": {
+		"@id": "マジカルレシピ-シルブプレ"
+	},
+	"subjectOf": {
+		"@id": "what-is-my-l"
+	}
+}

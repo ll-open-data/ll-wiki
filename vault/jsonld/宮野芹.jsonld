@@ -1,0 +1,9 @@
+{
+	"@context": "https://schema.org",
+	"@id": "宮野芹",
+	"@type": "Person",
+	"name": "宮野芹",
+	"relatedTo": {
+		"@id": "五桐玲"
+	}
+}

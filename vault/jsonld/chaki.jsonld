@@ -1,0 +1,29 @@
+{
+	"@context": "https://schema.org",
+	"@id": "chaki",
+	"@type": "MusicGroup",
+	"name": "CHAKI!",
+	"parentOrganization": {
+		"@id": "いきづらい部"
+	},
+	"memberOf": {
+		"@id": "浅草サテライト"
+	},
+	"member": [
+		{
+			"@id": "高橋ポルカ"
+		},
+		{
+			"@id": "麻布麻衣"
+		},
+		{
+			"@id": "五桐玲"
+		},
+		{
+			"@id": "駒形花火"
+		}
+	],
+	"album": {
+		"@id": "凸凹quartet"
+	}
+}

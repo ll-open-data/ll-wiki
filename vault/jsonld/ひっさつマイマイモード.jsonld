@@ -1,0 +1,15 @@
+{
+	"@context": "https://schema.org",
+	"@id": "ひっさつマイマイモード",
+	"@type": "MusicRecording",
+	"name": "ひっさつマイマイモード",
+	"byArtist": {
+		"@id": "麻布麻衣"
+	},
+	"inAlbum": {
+		"@id": "public-style"
+	},
+	"subjectOf": {
+		"@id": "what-is-my-l"
+	}
+}

@@ -1,0 +1,9 @@
+{
+	"@context": "https://schema.org",
+	"@id": "藤野こころ",
+	"@type": "Person",
+	"name": "藤野こころ",
+	"relatedTo": {
+		"@id": "駒形花火"
+	}
+}

@@ -17,7 +17,7 @@
 			"description": "Create new content or code using artifacts",
 			"command": "deno task lume new"
 		},
-		"gen-jsonld": "deno run --allow-read --allow-write scripts/gen-jsonld.ts && deno run --allow-net --allow-read scripts/validate.ts ./vault/jsonld",
+		"gen-jsonld": "deno run --allow-read --allow-write scripts/gen-jsonld.ts && deno run --allow-net --allow-read scripts/validate.ts",
 		"check": "deno run -A npm:@biomejs/biome check --write ./",
 		"check:unsafe": "deno run -A npm:@biomejs/biome check --write --unsafe ./"
 	},

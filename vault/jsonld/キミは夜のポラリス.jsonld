@@ -1,0 +1,15 @@
+{
+	"@context": "https://schema.org",
+	"@id": "キミは夜のポラリス",
+	"@type": "MusicAlbum",
+	"name": "キミは夜のポラリス",
+	"byArtist": {
+		"@id": "此花輝夜"
+	},
+	"track": {
+		"@id": "クラリトブライト"
+	},
+	"subjectOf": {
+		"@id": "what-is-my-l"
+	}
+}

@@ -1,0 +1,15 @@
+{
+	"@context": "https://schema.org",
+	"@id": "浅草guilty-girlの歌",
+	"@type": "MusicAlbum",
+	"name": "浅草Guilty Girlの歌",
+	"byArtist": {
+		"@id": "高橋ポルカ"
+	},
+	"track": {
+		"@id": "オドルポルカ"
+	},
+	"subjectOf": {
+		"@id": "what-is-my-l"
+	}
+}

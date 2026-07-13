@@ -1,0 +1,15 @@
+{
+	"@context": "https://schema.org",
+	"@id": "仙台サテライト",
+	"@type": "EducationalOrganization",
+	"name": "仙台サテライト",
+	"memberOf": {
+		"@id": "イキヅライブ-lovelive-bluebird"
+	},
+	"member": {
+		"@id": "佐々木翔音"
+	},
+	"subOrganization": {
+		"@id": "sh1on"
+	}
+}

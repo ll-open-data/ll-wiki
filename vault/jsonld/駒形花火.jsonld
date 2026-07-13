@@ -1,0 +1,26 @@
+{
+	"@context": "https://schema.org",
+	"@id": "駒形花火",
+	"@type": "Person",
+	"name": "駒形花火",
+	"memberOf": [
+		{
+			"@id": "いきづらい部"
+		},
+		{
+			"@id": "chaki"
+		},
+		{
+			"@id": "恋文乙女純情派"
+		}
+	],
+	"affiliation": {
+		"@id": "浅草サテライト"
+	},
+	"relatedTo": {
+		"@id": "藤野こころ"
+	},
+	"album": {
+		"@id": "hibana-火花"
+	}
+}

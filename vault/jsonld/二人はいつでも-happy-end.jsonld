@@ -1,0 +1,15 @@
+{
+	"@context": "https://schema.org",
+	"@id": "二人はいつでも-happy-end",
+	"@type": "MusicRecording",
+	"name": "二人はいつでも Happy End",
+	"byArtist": {
+		"@id": "春宮ゆくり"
+	},
+	"inAlbum": {
+		"@id": "pray-for-love"
+	},
+	"subjectOf": {
+		"@id": "what-is-my-l"
+	}
+}

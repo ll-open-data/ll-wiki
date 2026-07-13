@@ -17,13 +17,26 @@ function parseRelations(
 	return relations;
 }
 
+async function* walkMd(dir: string): AsyncGenerator<string> {
+	for await (const entry of Deno.readDir(dir)) {
+		const path = join(dir, entry.name);
+		if (entry.isDirectory && !entry.name.startsWith("_") && path !== OUT_DIR) {
+			yield* walkMd(path);
+		} else if (
+			entry.isFile &&
+			entry.name.endsWith(".md") &&
+			!entry.name.startsWith("_")
+		) {
+			yield path;
+		}
+	}
+}
+
 async function main() {
 	await Deno.mkdir(OUT_DIR, { recursive: true });
 
-	for await (const entry of Deno.readDir(VAULT_DIR)) {
-		if (!entry.name.endsWith(".md") || entry.name.startsWith("_")) continue;
-
-		const content = await Deno.readTextFile(join(VAULT_DIR, entry.name));
+	for await (const filePath of walkMd(VAULT_DIR)) {
+		const content = await Deno.readTextFile(filePath);
 		const { attrs, body } = extract<Record<string, unknown>>(content);
 		if (!attrs["@type"]) continue;
 
@@ -41,7 +54,8 @@ async function main() {
 			}
 		}
 
-		const outName = entry.name.replace(".md", ".jsonld");
+		const fileName = filePath.split("/").pop() ?? "";
+		const outName = fileName.replace(".md", ".jsonld");
 		const outPath = join(OUT_DIR, outName);
 		await Deno.writeTextFile(outPath, JSON.stringify(jsonld, null, 2));
 		console.log(`generated: ${outPath}`);

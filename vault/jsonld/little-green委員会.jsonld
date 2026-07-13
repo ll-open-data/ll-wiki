@@ -1,0 +1,15 @@
+{
+	"@context": "https://schema.org",
+	"@id": "little-green委員会",
+	"@type": "MusicAlbum",
+	"name": "Little Green委員会",
+	"byArtist": {
+		"@id": "山田真緑"
+	},
+	"track": {
+		"@id": "love-you-save-the-earth"
+	},
+	"subjectOf": {
+		"@id": "what-is-my-l"
+	}
+}

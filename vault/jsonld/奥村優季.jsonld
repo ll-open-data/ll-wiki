@@ -1,0 +1,9 @@
+{
+	"@context": "https://schema.org",
+	"@id": "奥村優季",
+	"@type": "Person",
+	"name": "奥村優季",
+	"relatedTo": {
+		"@id": "春宮ゆくり"
+	}
+}

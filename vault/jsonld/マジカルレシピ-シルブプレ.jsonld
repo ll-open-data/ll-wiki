@@ -1,0 +1,15 @@
+{
+	"@context": "https://schema.org",
+	"@id": "マジカルレシピ-シルブプレ",
+	"@type": "MusicRecording",
+	"name": "マジカルレシピ・シルブプレ！",
+	"byArtist": {
+		"@id": "金澤奇跡"
+	},
+	"inAlbum": {
+		"@id": "homerun-queen"
+	},
+	"subjectOf": {
+		"@id": "what-is-my-l"
+	}
+}

@@ -1,0 +1,23 @@
+{
+	"@context": "https://schema.org",
+	"@id": "梅田サテライト",
+	"@type": "EducationalOrganization",
+	"name": "梅田サテライト",
+	"memberOf": {
+		"@id": "イキヅライブ-lovelive-bluebird"
+	},
+	"member": [
+		{
+			"@id": "春宮ゆくり"
+		},
+		{
+			"@id": "此花輝夜"
+		},
+		{
+			"@id": "山田真緑"
+		}
+	],
+	"subOrganization": {
+		"@id": "plumina"
+	}
+}

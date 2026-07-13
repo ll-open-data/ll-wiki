@@ -1,0 +1,9 @@
+{
+	"@context": "https://schema.org",
+	"@id": "瀬古梨愛",
+	"@type": "Person",
+	"name": "瀬古梨愛",
+	"relatedTo": {
+		"@id": "調布のりこ"
+	}
+}

@@ -1,0 +1,15 @@
+{
+	"@context": "https://schema.org",
+	"@id": "super-summer-sensation",
+	"@type": "MusicRecording",
+	"name": "SUPER SUMMER SENSATION!!",
+	"byArtist": {
+		"@id": "いきづらい部"
+	},
+	"inAlbum": {
+		"@id": "dou-da-doing"
+	},
+	"subjectOf": {
+		"@id": "what-is-my-l"
+	}
+}

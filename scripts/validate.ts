@@ -1,5 +1,7 @@
 import Validator from "@adobe/structured-data-validator";
 
+const OUT_DIR = "./vault/jsonld";
+
 type JsonLdNode = {
 	"@type"?: string | string[];
 	"@graph"?: JsonLdNode[];
@@ -7,7 +9,6 @@ type JsonLdNode = {
 };
 type JsonLdData = JsonLdNode | JsonLdNode[];
 
-const dir = Deno.args[0] ?? ".";
 const schemaRes = await fetch(
 	"https://schema.org/version/latest/schemaorg-all-https.jsonld",
 );
@@ -34,13 +35,13 @@ function groupByType(nodes: JsonLdNode[]): Record<string, JsonLdNode[]> {
 
 let hasError = false;
 
-for await (const entry of Deno.readDir(dir)) {
+for await (const entry of Deno.readDir(OUT_DIR)) {
 	if (!entry.isFile) continue;
 	if (!entry.name.endsWith(".json") && !entry.name.endsWith(".jsonld")) {
 		continue;
 	}
 
-	const raw = await Deno.readTextFile(`${dir}/${entry.name}`);
+	const raw = await Deno.readTextFile(`${OUT_DIR}/${entry.name}`);
 	const jsonld = groupByType(extractNodes(JSON.parse(raw) as JsonLdData));
 	const results = await validator.validate({
 		jsonld,
