@@ -1,0 +1,9 @@
+{
+  "@context": "https://schema.org",
+  "@id": "涼ノ瀬葵音",
+  "@type": "Person",
+  "name": "涼ノ瀬葵音",
+  "relatedTo": {
+    "@id": "佐々木翔音"
+  }
+}

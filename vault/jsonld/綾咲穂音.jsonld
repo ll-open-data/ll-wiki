@@ -1,0 +1,9 @@
+{
+  "@context": "https://schema.org",
+  "@id": "綾咲穂音",
+  "@type": "Person",
+  "name": "綾咲穂音",
+  "relatedTo": {
+    "@id": "高橋ポルカ"
+  }
+}

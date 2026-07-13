@@ -14,9 +14,7 @@
 ## 楽曲
 
 01. What is my LIFE?
-作詞：畑 亜貴　作曲/編曲：光増ハジメ (FirstCall)
 02. [[ヒミツミチ]](track)
-作詞：児玉雨子　作曲/編曲：福田貴史
 
 03. What is my LIFE? (Off Vocal)
 04. ヒミツミチ (Off Vocal)

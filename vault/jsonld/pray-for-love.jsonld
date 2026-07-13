@@ -1,12 +1,15 @@
 {
-	"@context": "https://schema.org",
-	"@id": "pray-for-love",
-	"@type": "MusicRecording",
-	"name": "Pray for love",
-	"byArtist": [
-		"春宮ゆくり",
-		{
-			"@id": "春宮ゆくり"
-		}
-	]
+  "@context": "https://schema.org",
+  "@id": "pray-for-love",
+  "@type": "MusicAlbum",
+  "name": "Pray for love",
+  "byArtist": {
+    "@id": "春宮ゆくり"
+  },
+  "track": {
+    "@id": "二人はいつでも-happy-end"
+  },
+  "subjectOf": {
+    "@id": "what-is-my-l"
+  }
 }

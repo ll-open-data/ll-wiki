@@ -7,4 +7,4 @@
 
 # 京王アリーナTOKYO
 
-[[イキヅライブ-lovelive-bluebird-2nd-live]](subjectOf)
+[[reply-to-l]](subjectOf)

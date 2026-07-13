@@ -7,7 +7,16 @@
 
 # Dou-Da? DOING!
 
-[[いきづらい部]](byArtist) の2nd Single。2026年6月10日リリース。アニメーションMV公開済み。
+[[いきづらい部]](byArtist) の2nd Singleおよび表題曲。2026年6月10日リリース。
 
-[[regain-again-llllove]](track)
-[[super-summer-sensation]](track)
+<iframe width="560" height="315" src="https://www.youtube.com/embed/1rh28c5sVZ4?si=QGGzvez41Bd9MVhA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+## 楽曲
+
+01. Dou-Da? DOING!
+02. [[regain-again-llllove]](track)
+03. [[super-summer-sensation]](track)
+
+## 披露されたライブイベント
+
+[[what-is-my-l]](subjectOf)

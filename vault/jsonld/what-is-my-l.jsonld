@@ -1,0 +1,98 @@
+{
+  "@context": "https://schema.org",
+  "@id": "what-is-my-l",
+  "@type": "MusicEvent",
+  "name": "いきづらい部！ 1st LIVE ～ What is my L ? ～",
+  "location": {
+    "@id": "幕張イベントホール"
+  },
+  "workPerformed": [
+    {
+      "@id": "what-is-my-life"
+    },
+    {
+      "@id": "浅草guilty-girlの歌"
+    },
+    {
+      "@id": "public-style"
+    },
+    {
+      "@id": "いつか碧"
+    },
+    {
+      "@id": "hibana-火花"
+    },
+    {
+      "@id": "凸凹quartet"
+    },
+    {
+      "@id": "pray-for-love"
+    },
+    {
+      "@id": "キミは夜のポラリス"
+    },
+    {
+      "@id": "little-green委員会"
+    },
+    {
+      "@id": "daitan-party-time"
+    },
+    {
+      "@id": "homerun-queen"
+    },
+    {
+      "@id": "恋のワンタイムパスワード"
+    },
+    {
+      "@id": "イキタクナイevery-day"
+    },
+    {
+      "@id": "シンメトリー"
+    },
+    {
+      "@id": "silent-stella"
+    },
+    {
+      "@id": "regain-again-llllove"
+    },
+    {
+      "@id": "オドルポルカ"
+    },
+    {
+      "@id": "trick-or-toxic"
+    },
+    {
+      "@id": "センチメートル-ランデブー"
+    },
+    {
+      "@id": "love-you-save-the-earth"
+    },
+    {
+      "@id": "クラリトブライト"
+    },
+    {
+      "@id": "マジカルレシピ-シルブプレ"
+    },
+    {
+      "@id": "二人はいつでも-happy-end"
+    },
+    {
+      "@id": "first-ride"
+    },
+    {
+      "@id": "ジェットスターター"
+    },
+    {
+      "@id": "ひっさつマイマイモード"
+    },
+    {
+      "@id": "ヒミツミチ"
+    },
+    {
+      "@id": "dou-da-doing"
+    },
+    {
+      "@id": "what-is-my-life"
+    }
+  ]
+}

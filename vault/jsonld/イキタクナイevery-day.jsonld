@@ -1,13 +1,15 @@
 {
-	"@context": "https://schema.org",
-	"@id": "イキタクナイevery-day",
-	"@type": "MusicRecording",
-	"name": "イキタクナイevery day",
-	"byArtist": [
-		"佐々木翔音",
-		{
-			"@id": "佐々木翔音"
-		}
-	],
-	"datePublished": "2025-10-29"
+  "@context": "https://schema.org",
+  "@id": "イキタクナイevery-day",
+  "@type": "MusicAlbum",
+  "name": "イキタクナイevery day",
+  "byArtist": {
+    "@id": "佐々木翔音"
+  },
+  "track": {
+    "@id": "trick-or-toxic"
+  },
+  "subjectOf": {
+    "@id": "what-is-my-l"
+  }
 }

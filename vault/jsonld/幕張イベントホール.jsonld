@@ -1,0 +1,9 @@
+{
+  "@context": "https://schema.org",
+  "@id": "幕張イベントホール",
+  "@type": "Place",
+  "name": "幕張イベントホール",
+  "subjectOf": {
+    "@id": "what-is-my-l"
+  }
+}

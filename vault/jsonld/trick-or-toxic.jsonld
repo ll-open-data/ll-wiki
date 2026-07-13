@@ -1,0 +1,15 @@
+{
+  "@context": "https://schema.org",
+  "@id": "trick-or-toxic",
+  "@type": "MusicRecording",
+  "name": "Trick or Toxic",
+  "byArtist": {
+    "@id": "佐々木翔音"
+  },
+  "inAlbum": {
+    "@id": "イキタクナイevery-day"
+  },
+  "subjectOf": {
+    "@id": "what-is-my-l"
+  }
+}

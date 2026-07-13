@@ -1,28 +1,26 @@
 {
-	"@context": "https://schema.org",
-	"@id": "浅草サテライト",
-	"@type": "EducationalOrganization",
-	"name": "浅草サテライト",
-	"location": "東京",
-	"parentOrganization": "Love学院高等学校",
-	"memberOf": {
-		"@id": "イキヅライブ-lovelive-bluebird"
-	},
-	"member": [
-		{
-			"@id": "高橋ポルカ"
-		},
-		{
-			"@id": "麻布麻衣"
-		},
-		{
-			"@id": "五桐玲"
-		},
-		{
-			"@id": "駒形花火"
-		}
-	],
-	"subOrganization": {
-		"@id": "chaki"
-	}
+  "@context": "https://schema.org",
+  "@id": "浅草サテライト",
+  "@type": "EducationalOrganization",
+  "name": "浅草サテライト",
+  "memberOf": {
+    "@id": "イキヅライブ-lovelive-bluebird"
+  },
+  "member": [
+    {
+      "@id": "高橋ポルカ"
+    },
+    {
+      "@id": "麻布麻衣"
+    },
+    {
+      "@id": "五桐玲"
+    },
+    {
+      "@id": "駒形花火"
+    }
+  ],
+  "subOrganization": {
+    "@id": "chaki"
+  }
 }

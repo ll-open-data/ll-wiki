@@ -1,13 +1,15 @@
 {
-	"@context": "https://schema.org",
-	"@id": "恋のワンタイムパスワード",
-	"@type": "MusicRecording",
-	"name": "恋のワンタイムパスワード",
-	"byArtist": [
-		"調布のりこ",
-		{
-			"@id": "調布のりこ"
-		}
-	],
-	"datePublished": "2025-09-24"
+  "@context": "https://schema.org",
+  "@id": "恋のワンタイムパスワード",
+  "@type": "MusicAlbum",
+  "name": "恋のワンタイムパスワード",
+  "byArtist": {
+    "@id": "調布のりこ"
+  },
+  "track": {
+    "@id": "センチメートル-ランデブー"
+  },
+  "subjectOf": {
+    "@id": "what-is-my-l"
+  }
 }

@@ -58,6 +58,8 @@ name: "Wikiガイド"
 
 ## エンティティ別プロパティ規約
 
+よく使うカテゴリ・関係のガイド
+
 ### MusicAlbum (シングル/アルバム)
 
 表題曲とシングル/アルバムページは同一とする。
@@ -96,6 +98,7 @@ name: "Wikiガイド"
 | `memberOf` | `MusicGroup` | 所属するグループ/ユニット | 所属するグループ/ユニット |
 | `album` | `MusicAlbum` | リリースしたソロシングル/アルバム | - |
 | `affiliation` | `Organization` | 所属している学校 | 所属している事務所 |
+| `relatedTo` | `Person` | 担当声優 | 担当キャラクター |
 
 ### MusicEvent (ライブイベント)
 

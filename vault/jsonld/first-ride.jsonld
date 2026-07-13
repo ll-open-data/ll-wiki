@@ -1,0 +1,15 @@
+{
+  "@context": "https://schema.org",
+  "@id": "first-ride",
+  "@type": "MusicRecording",
+  "name": "First Ride",
+  "byArtist": {
+    "@id": "駒形花火"
+  },
+  "inAlbum": {
+    "@id": "hibana-火花"
+  },
+  "subjectOf": {
+    "@id": "what-is-my-l"
+  }
+}

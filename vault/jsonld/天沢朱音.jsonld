@@ -1,0 +1,9 @@
+{
+  "@context": "https://schema.org",
+  "@id": "天沢朱音",
+  "@type": "Person",
+  "name": "天沢朱音",
+  "relatedTo": {
+    "@id": "此花輝夜"
+  }
+}

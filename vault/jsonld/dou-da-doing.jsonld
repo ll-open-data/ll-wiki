@@ -1,21 +1,20 @@
 {
-	"@context": "https://schema.org",
-	"@id": "dou-da-doing",
-	"@type": "MusicRecording",
-	"name": "Dou-Da? DOING!",
-	"byArtist": [
-		"いきづらい部!",
-		{
-			"@id": "いきづらい部"
-		}
-	],
-	"datePublished": "2026-06-10",
-	"isPartOf": [
-		{
-			"@id": "regain-again-llllove"
-		},
-		{
-			"@id": "super-summer-sensation"
-		}
-	]
+  "@context": "https://schema.org",
+  "@id": "dou-da-doing",
+  "@type": "MusicAlbum",
+  "name": "Dou-Da? DOING!",
+  "byArtist": {
+    "@id": "いきづらい部"
+  },
+  "track": [
+    {
+      "@id": "regain-again-llllove"
+    },
+    {
+      "@id": "super-summer-sensation"
+    }
+  ],
+  "subjectOf": {
+    "@id": "what-is-my-l"
+  }
 }

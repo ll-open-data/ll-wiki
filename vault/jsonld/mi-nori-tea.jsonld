@@ -1,26 +1,23 @@
 {
-	"@context": "https://schema.org",
-	"@id": "mi-nori-tea",
-	"@type": "MusicGroup",
-	"name": "Mi×Nori=Tea",
-	"memberOf": [
-		"いきづらい部!",
-		{
-			"@id": "福井サテライト"
-		}
-	],
-	"parentOrganization": {
-		"@id": "いきづらい部"
-	},
-	"member": [
-		{
-			"@id": "金澤奇跡"
-		},
-		{
-			"@id": "調布のりこ"
-		}
-	],
-	"track": {
-		"@id": "シンメトリー"
-	}
+  "@context": "https://schema.org",
+  "@id": "mi-nori-tea",
+  "@type": "MusicGroup",
+  "name": "Mi×Nori=Tea",
+  "parentOrganization": {
+    "@id": "いきづらい部"
+  },
+  "memberOf": {
+    "@id": "福井サテライト"
+  },
+  "member": [
+    {
+      "@id": "金澤奇跡"
+    },
+    {
+      "@id": "調布のりこ"
+    }
+  ],
+  "album": {
+    "@id": "シンメトリー"
+  }
 }

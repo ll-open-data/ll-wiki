@@ -7,6 +7,10 @@
 
 # REGAIN AGAIN LLLLOVE
 
-[[いきづらい部]](byArtist) の2nd Single両A面曲。2026年6月10日リリース。
+[[いきづらい部]](byArtist) の2nd Single [[dou-da-doing]](inAlbum) 収録。2026年6月10日リリース。
 
-[[dou-da-doing]](inAlbum)
+<iframe width="560" height="315" src="https://www.youtube.com/embed/UfPLXW8cpT8?si=pN-21GAX3l_gxKHr" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+## 披露されたライブイベント
+
+[[what-is-my-l]](subjectOf)

@@ -1,12 +1,12 @@
 {
-	"@context": "https://schema.org",
-	"@id": "凸凹quartet",
-	"@type": "MusicRecording",
-	"name": "凸凹Quartet",
-	"byArtist": [
-		"CHAKI!",
-		{
-			"@id": "chaki"
-		}
-	]
+  "@context": "https://schema.org",
+  "@id": "凸凹quartet",
+  "@type": "MusicAlbum",
+  "name": "凸凹Quartet",
+  "byArtist": {
+    "@id": "chaki"
+  },
+  "subjectOf": {
+    "@id": "what-is-my-l"
+  }
 }

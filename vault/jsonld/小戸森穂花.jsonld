@@ -1,0 +1,9 @@
+{
+  "@context": "https://schema.org",
+  "@id": "小戸森穂花",
+  "@type": "Person",
+  "name": "小戸森穂花",
+  "relatedTo": {
+    "@id": "山田真緑"
+  }
+}

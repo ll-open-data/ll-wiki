@@ -1,28 +1,26 @@
 {
-	"@context": "https://schema.org",
-	"@id": "調布のりこ",
-	"@type": "Person",
-	"name": "調布のりこ",
-	"birthDate": "--04-04",
-	"height": "153cm",
-	"affiliation": [
-		"福井サテライト",
-		{
-			"@id": "福井サテライト"
-		}
-	],
-	"memberOf": [
-		{
-			"@id": "いきづらい部"
-		},
-		{
-			"@id": "mi-nori-tea"
-		},
-		{
-			"@id": "恋文乙女純情派"
-		}
-	],
-	"subjectOf": {
-		"@id": "恋のワンタイムパスワード"
-	}
+  "@context": "https://schema.org",
+  "@id": "調布のりこ",
+  "@type": "Person",
+  "name": "調布のりこ",
+  "memberOf": [
+    {
+      "@id": "いきづらい部"
+    },
+    {
+      "@id": "mi-nori-tea"
+    },
+    {
+      "@id": "恋文乙女純情派"
+    }
+  ],
+  "affiliation": {
+    "@id": "福井サテライト"
+  },
+  "relatedTo": {
+    "@id": "瀬古梨愛"
+  },
+  "album": {
+    "@id": "恋のワンタイムパスワード"
+  }
 }

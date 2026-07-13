@@ -1,0 +1,9 @@
+{
+  "@context": "https://schema.org",
+  "@id": "reply-to-l",
+  "@type": "MusicEvent",
+  "name": "いきづらい部！ 2nd LIVE Dou-Da? DOING! ～Reply to L～",
+  "location": {
+    "@id": "京王アリーナtokyo"
+  }
+}
