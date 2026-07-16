@@ -19,15 +19,20 @@ vault/
   guide.md                     # 記述規約・スキーマガイド
   jsonld/graph.jsonld          # コンパイル済み知識グラフ (JSON-LD)
   sparql/index.html            # SPARQL クエリ UI
-  {シリーズ名}/
-    TVSeries/                  # メディアミックスプロジェクト
-    Person/                    # キャラクター・声優
-    MusicGroup/                # ユニット・グループ
-    MusicAlbum/                # シングル・アルバム
-    MusicRecording/            # 収録曲 (表題曲以外)
-    MusicEvent/                # ライブイベント
-    EducationalOrganization/   # サテライト校
-    Place/                     # ライブ会場
+  TVSeries/                    # メディアミックスプロジェクト
+  Person/                      # キャラクター・声優
+  MusicGroup/                  # ユニット・グループ
+  MusicAlbum/                  # シングル・アルバム
+  MusicRecording/              # 収録曲 (表題曲以外)
+  MusicEvent/                  # ライブイベント
+  EducationalOrganization/     # サテライト校
+  Place/                       # 会場・場所
+  Organization/                # 企業・NGO・プロジェクト
+  LocalBusiness/               # 店舗・事業所
+  Event/                       # 非音楽イベント
+  CreativeWork/                # 記事・リスト等
+  Product/                     # 物・食品・グッズ
+  SoftwareApplication/         # ソフトウェア
 scripts/
   gen-jsonld.ts                # JSON-LD 生成スクリプト
   validate.ts                  # JSON-LD 検証スクリプト
@@ -96,44 +101,6 @@ Content-Type: application/json
   "results": [
     { "var1": "値1", "var2": "値2" }
   ]
-}
-```
-
-### クエリ例
-
-**グループのメンバー一覧**
-
-```sparql
-PREFIX schema: <https://schema.org/>
-
-SELECT ?memberName WHERE {
-  ?group schema:name "いきづらい部" .
-  ?group schema:member ?member .
-  ?member schema:name ?memberName .
-}
-```
-
-**キャラクターのソロ楽曲**
-
-```sparql
-PREFIX schema: <https://schema.org/>
-
-SELECT ?albumName WHERE {
-  ?person schema:name "高橋ポルカ" .
-  ?person schema:album ?album .
-  ?album schema:name ?albumName .
-}
-```
-
-**ライブのセットリスト**
-
-```sparql
-PREFIX schema: <https://schema.org/>
-
-SELECT ?songName WHERE {
-  ?event schema:name "What is my L?" .
-  ?event schema:workPerformed ?song .
-  ?song schema:name ?songName .
 }
 ```
 

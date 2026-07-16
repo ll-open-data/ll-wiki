@@ -1,82 +1,53 @@
-# ll-wiki llms.txt
+# AGENTS.md - エージェント向け探索ガイド
 
-## 概要
+このドキュメントはLLMエージェントがll-wikiを効率的に探索するための手順を記述します。
 
-ラブライブ！シリーズに関する構造化データを収録したWikiです。schema.org語彙とObsidian形式のwikilinksを用いてデータを記述し、JSON-LDに変換することでSPARQLクエリに対応しています。
+## このWikiに含まれるもの
 
-## データの場所
+ラブライブ！シリーズに関する構造化データ。
 
-すべてのコンテンツは `vault/` 以下に存在します。現在収録しているシリーズは `ikizulive`（イキヅライブ! LOVELIVE! BLUEBIRD）です。
+## データへの最速アクセス
 
-## ディレクトリ構成
+**構造化クエリが目的の場合**: まず `vault/jsonld/graph.jsonld` を読む。全エンティティ・型・リレーションがJSON-LDとして収録されています。
 
-```
-vault/
-  index.md                        # トップページ
-  guide.md                        # 記述規約・スキーマガイド
-  jsonld/graph.jsonld             # コンパイル済み知識グラフ (JSON-LD)
-  sparql/index.html               # SPARQLクエリUI
-  ikizulive/
-    TVSeries/                     # メディアミックスプロジェクト
-    Person/                       # キャラクター・声優
-    MusicGroup/                   # ユニット・グループ
-    MusicAlbum/                   # シングル・アルバム（表題曲含む）
-    MusicRecording/               # 収録曲（表題曲以外）
-    MusicEvent/                   # ライブイベント
-    EducationalOrganization/      # サテライト校
-    Place/                        # ライブ会場
-```
+**自然言語の詳細情報が目的の場合**: 対象エンティティのMarkdownファイルを読む。誕生日・身長・性格説明など、JSON-LDに含まれない情報が本文に記述されています。
 
-## ファイル形式
+## 特定エンティティの見つけ方
 
-各ファイルはYAMLフロントマターを持ちます。
+1. 型を確認する（Person, MusicAlbum, MusicGroup など）
+2. `vault/<型>/<スラグ>.md` を読む
+3. スラグ = 表示名をASCII小文字化・スペースを `-` に・記号を `-` に変換したもの
 
-```yaml
----
-"@context": "https://schema.org"
-"@id": "<ファイル名と一致するスラグ>"
-"@type": "<schema.orgの型>"
-"name": "<表示名>"
----
-```
+例:
+- キャラクター「高橋ポルカ」-> `vault/Person/高橋ポルカ.md`
+- シングル「Daitan Party Time」-> `vault/MusicAlbum/daitan-party-time.md`
+- グループ「いきづらい部!」-> `vault/MusicGroup/いきづらい部.md`
 
-本文は自由形式のMarkdownです。エンティティ間の関係はwikilinks記法で表現します。
+## エンティティ型とディレクトリ
 
-```
-[[対象スラグ]](プロパティ名)
-```
+| ディレクトリ | 型 | 内容 |
+|---|---|---|
+| `Person/` | キャラクター or 声優 | 名前・所属ユニット・ディスコグラフィ・学校 |
+| `MusicGroup/` | アイドルユニット/グループ | メンバー・ディスコグラフィ・サブ/親ユニット |
+| `MusicAlbum/` | シングルorアルバム | アーティスト・収録曲・披露イベント |
+| `MusicRecording/` | 収録曲（表題曲以外） | アーティスト・収録アルバム・披露イベント |
+| `MusicEvent/` | ライブイベント | 会場・日程・セットリスト・キャスト |
+| `TVSeries/` | メディアミックスプロジェクト | キャラクター・キャスト・ライブイベント・親ユニット |
+| `EducationalOrganization/` | サテライト校 | 名称・所在地 |
+| `Place/` | 会場・場所 | 開催イベント・関連人物 |
+| `Organization/` | 企業・NGO・プロジェクト | メンバー・所在地 |
+| `LocalBusiness/` | 店舗・事業所 | 所在地・関連人物 |
+| `Event/` | 非音楽イベント | 参加者・開催場所 |
+| `CreativeWork/` | 記事・リスト等 | 作成者・言及内容 |
+| `Product/` | 物・食品・グッズ | 関連人物・物 |
+| `SoftwareApplication/` | ソフトウェア | 開発組織 |
 
-例: `[[いきづらい部]](memberOf)` はこのエンティティが `memberOf` として `いきづらい部` を指すことを意味します。
+## リレーションの辿り方
 
-## 主なリレーションプロパティ (schema.org)
+Markdownの本文中 `[[対象]](プロパティ)` 形式でリレーションが記述されています。
 
-| プロパティ | From | To | 意味 |
-|---|---|---|---|
-| memberOf | Person | MusicGroup | キャラクター/声優がグループに所属 |
-| member | MusicGroup | Person | グループがメンバーを持つ |
-| album | Person/MusicGroup | MusicAlbum | リリースしたシングル/アルバム |
-| byArtist | MusicAlbum/MusicRecording | Person/MusicGroup | 歌唱アーティスト |
-| track | MusicAlbum | MusicRecording | アルバム収録曲（表題曲以外） |
-| inAlbum | MusicRecording | MusicAlbum | 収録されているアルバム |
-| subjectOf | MusicAlbum/MusicRecording | MusicEvent | 披露されたイベント |
-| workPerformed | MusicEvent | MusicAlbum/MusicRecording | セットリスト |
-| actor | TVSeries/MusicEvent | Person | 声優 |
-| character | TVSeries | Person | 登場キャラクター |
-| relatedTo | Person | Person | キャラクター<->担当声優 |
-| affiliation | Person | EducationalOrganization | 所属学校/事務所 |
-| location | MusicEvent | Place | 開催会場 |
-| recordedAt | TVSeries | MusicEvent | 関連ライブイベント |
-| musicBy | TVSeries | MusicGroup | 親ユニット |
-| parentOrganization | MusicGroup | MusicGroup | 親ユニット |
-| subOrganization | MusicGroup | MusicGroup | サブユニット |
+- グループのメンバーを知りたい -> MusicGroupファイルの `[[X]](member)` を収集
+- キャラクターの担当声優を知りたい -> Personファイルの `[[X]](relatedTo)` を参照
+- ライブのセットリストを知りたい -> MusicEventファイルの `[[X]](workPerformed)` を収集
 
-## 機械可読グラフ
-
-`vault/jsonld/graph.jsonld` にすべてのエンティティとリレーションを含むJSON-LDグラフがあります。個別ファイルを読まずに構造化データを取得する場合はこちらが最速です。
-
-## スラグ命名規則
-
-- ASCII英字は小文字に変換
-- スペースは `-` に置換
-- 記号（`!`, `?`, `x`, `=`, `'` など）は `-` に変換し、連続する `-` は1つにまとめ、末尾の `-` は除去
-- 日本語（ひらがな・カタカナ・漢字）はそのまま維持
+同じリレーションは `vault/jsonld/graph.jsonld` でもJSON-LDプロパティとして参照できます。
