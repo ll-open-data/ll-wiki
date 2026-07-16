@@ -11,35 +11,6 @@
 - ビルド時に JSON-LD グラフ (`vault/jsonld/graph.jsonld`) を自動生成
 - [Lume](https://lume.land/) で静的サイトをビルドし、[Oxigraph](https://github.com/oxigraph/oxigraph) で SPARQL クエリに対応
 
-## ディレクトリ構成
-
-```
-vault/
-  index.md                     # トップページ
-  guide.md                     # 記述規約・スキーマガイド
-  jsonld/graph.jsonld          # コンパイル済み知識グラフ (JSON-LD)
-  sparql/index.html            # SPARQL クエリ UI
-  TVSeries/                    # メディアミックスプロジェクト
-  Person/                      # キャラクター・声優
-  MusicGroup/                  # ユニット・グループ
-  MusicAlbum/                  # シングル・アルバム
-  MusicRecording/              # 収録曲 (表題曲以外)
-  MusicEvent/                  # ライブイベント
-  EducationalOrganization/     # サテライト校
-  Place/                       # 会場・場所
-  Organization/                # 企業・NGO・プロジェクト
-  LocalBusiness/               # 店舗・事業所
-  Event/                       # 非音楽イベント
-  CreativeWork/                # 記事・リスト等
-  Product/                     # 物・食品・グッズ
-  SoftwareApplication/         # ソフトウェア
-scripts/
-  gen-jsonld.ts                # JSON-LD 生成スクリプト
-  validate.ts                  # JSON-LD 検証スクリプト
-main.ts                        # サーバー (静的配信 + SPARQL API)
-_config.ts                     # Lume 設定
-```
-
 ## 開発
 
 ```sh
@@ -82,25 +53,29 @@ deno task check
 
 ## SPARQL API
 
-サーバー起動後、`POST /api/sparql` で SPARQL SELECT クエリを実行できます。
+W3C SPARQL 1.1 Protocol 準拠。サーバー起動後、`GET /sparql` で SPARQL SELECT クエリを実行できます。
 
 ### リクエスト
 
 ```
-POST /api/sparql
-Content-Type: application/json
-
-{ "query": "<SPARQL クエリ文字列>" }
+GET /sparql?query=<URL エンコードされた SPARQL クエリ>
 ```
 
 ### レスポンス
 
+SPARQL 1.1 Query Results JSON Format:
+
 ```json
 {
-  "vars": ["var1", "var2"],
-  "results": [
-    { "var1": "値1", "var2": "値2" }
-  ]
+  "head": { "vars": ["var1", "var2"] },
+  "results": {
+    "bindings": [
+      {
+        "var1": { "type": "literal", "value": "値1" },
+        "var2": { "type": "uri", "value": "https://example.org/値2" }
+      }
+    ]
+  }
 }
 ```
 
@@ -108,7 +83,7 @@ Content-Type: application/json
 
 | ステータス | 内容 |
 |---|---|
-| 400 | クエリ構文エラー、`query` フィールド未指定、JSON パース失敗 |
+| 400 | クエリ構文エラー、`query` パラメータ未指定 |
 
 ## 貢献
 

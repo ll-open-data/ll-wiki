@@ -8,28 +8,18 @@ store.load(graphJson, {
 	base_iri: "https://ll-wiki.local/",
 });
 
-Deno.serve((req: Request): Promise<Response> => {
+Deno.serve((req: Request): Response | Promise<Response> => {
 	const url = new URL(req.url);
 
-	if (url.pathname === "/api/sparql" && req.method === "POST") {
-		return handleSparql(req);
+	if (url.pathname === "/sparql" && req.method === "GET") {
+		return handleSparql(url);
 	}
 
 	return serveDir(req, { fsRoot: "_site" });
 });
 
-async function handleSparql(req: Request): Promise<Response> {
-	let query: string;
-
-	try {
-		const body = await req.json();
-		query = body.query;
-	} catch {
-		return new Response(JSON.stringify({ error: "invalid JSON" }), {
-			status: 400,
-			headers: { "Content-Type": "application/json" },
-		});
-	}
+function handleSparql(url: URL): Response {
+	const query = url.searchParams.get("query");
 
 	if (!query) {
 		return new Response(JSON.stringify({ error: "query is required" }), {
@@ -43,20 +33,36 @@ async function handleSparql(req: Request): Promise<Response> {
 		if (!Array.isArray(result)) {
 			throw new Error("SELECT query expected");
 		}
-		const bindings = result as Map<string, { value: string }>[];
+		const bindings = result as Map<
+			string,
+			{ termType: string; value: string }
+		>[];
 		const vars = bindings.length > 0 ? [...bindings[0].keys()] : [];
 
-		const results = bindings.map((binding) => {
-			const row: Record<string, string> = {};
+		const typeMap: Record<string, string> = {
+			NamedNode: "uri",
+			BlankNode: "bnode",
+			Literal: "literal",
+		};
+
+		const sparqlBindings = bindings.map((binding) => {
+			const row: Record<string, { type: string; value: string }> = {};
 			for (const v of vars) {
-				row[v] = binding.get(v)?.value ?? "";
+				const term = binding.get(v);
+				if (term) {
+					row[v] = {
+						type: typeMap[term.termType] ?? "literal",
+						value: term.value,
+					};
+				}
 			}
 			return row;
 		});
 
-		return new Response(JSON.stringify({ vars, results }), {
-			headers: { "Content-Type": "application/json" },
-		});
+		return new Response(
+			JSON.stringify({ head: { vars }, results: { bindings: sparqlBindings } }),
+			{ headers: { "Content-Type": "application/json" } },
+		);
 	} catch (err) {
 		return new Response(
 			JSON.stringify({

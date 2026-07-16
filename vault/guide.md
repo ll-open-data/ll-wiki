@@ -11,6 +11,8 @@ name: "Wikiガイド"
 
 - SPARQL
     - RDFでページ間の関係を記述し、JSON-LDに変換
+    - `GET /sparql?query=...` エンドポイントで実行 (W3C SPARQL 1.1 Protocol 準拠)
+    - UIは `/graph` で利用可能
 
 - Agentic Search
     - ただRDFを記述するだけでなく、そこに自然言語で情報を付加することで、LLMによるAgentic Searchを可能にする
