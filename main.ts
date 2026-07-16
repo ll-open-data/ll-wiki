@@ -8,18 +8,22 @@ store.load(graphJson, {
 	base_iri: "https://ll-wiki.marukun712.deno.net/",
 });
 
+// https://docs.deno.com/examples/http_server_cors/
+function corsHeaders(): Headers {
+	const headers = new Headers();
+	headers.set("access-control-allow-origin", "*");
+	return headers;
+}
+
 Deno.serve((req: Request): Response | Promise<Response> => {
 	const url = new URL(req.url);
 
 	if (url.pathname === "/sparql" && req.method === "OPTIONS") {
-		return new Response(null, {
-			status: 204,
-			headers: {
-				"Access-Control-Allow-Origin": "*",
-				"Access-Control-Allow-Methods": "GET",
-				"Access-Control-Allow-Headers": "Content-Type",
-			},
-		});
+		const headers = corsHeaders();
+		headers.set("access-control-allow-methods", "GET");
+		headers.set("access-control-allow-headers", "content-type");
+		headers.set("access-control-max-age", "86400");
+		return new Response(null, { status: 204, headers });
 	}
 
 	if (url.pathname === "/sparql" && req.method === "GET") {
@@ -33,12 +37,11 @@ function handleSparql(url: URL): Response {
 	const query = url.searchParams.get("query");
 
 	if (!query) {
+		const headers = corsHeaders();
+		headers.set("content-type", "application/json");
 		return new Response(JSON.stringify({ error: "query is required" }), {
 			status: 400,
-			headers: {
-				"Content-Type": "application/json",
-				"Access-Control-Allow-Origin": "*",
-			},
+			headers,
 		});
 	}
 
@@ -73,27 +76,20 @@ function handleSparql(url: URL): Response {
 			return row;
 		});
 
+		const headers = corsHeaders();
+		headers.set("content-type", "application/json");
 		return new Response(
 			JSON.stringify({ head: { vars }, results: { bindings: sparqlBindings } }),
-			{
-				headers: {
-					"Content-Type": "application/json",
-					"Access-Control-Allow-Origin": "*",
-				},
-			},
+			{ headers },
 		);
 	} catch (err) {
+		const headers = corsHeaders();
+		headers.set("content-type", "application/json");
 		return new Response(
 			JSON.stringify({
 				error: err instanceof Error ? err.message : String(err),
 			}),
-			{
-				status: 400,
-				headers: {
-					"Content-Type": "application/json",
-					"Access-Control-Allow-Origin": "*",
-				},
-			},
+			{ status: 400, headers },
 		);
 	}
 }
