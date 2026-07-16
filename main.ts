@@ -11,6 +11,17 @@ store.load(graphJson, {
 Deno.serve((req: Request): Response | Promise<Response> => {
 	const url = new URL(req.url);
 
+	if (url.pathname === "/sparql" && req.method === "OPTIONS") {
+		return new Response(null, {
+			status: 204,
+			headers: {
+				"Access-Control-Allow-Origin": "*",
+				"Access-Control-Allow-Methods": "GET",
+				"Access-Control-Allow-Headers": "Content-Type",
+			},
+		});
+	}
+
 	if (url.pathname === "/sparql" && req.method === "GET") {
 		return handleSparql(url);
 	}
@@ -24,7 +35,10 @@ function handleSparql(url: URL): Response {
 	if (!query) {
 		return new Response(JSON.stringify({ error: "query is required" }), {
 			status: 400,
-			headers: { "Content-Type": "application/json" },
+			headers: {
+				"Content-Type": "application/json",
+				"Access-Control-Allow-Origin": "*",
+			},
 		});
 	}
 
@@ -61,14 +75,25 @@ function handleSparql(url: URL): Response {
 
 		return new Response(
 			JSON.stringify({ head: { vars }, results: { bindings: sparqlBindings } }),
-			{ headers: { "Content-Type": "application/json" } },
+			{
+				headers: {
+					"Content-Type": "application/json",
+					"Access-Control-Allow-Origin": "*",
+				},
+			},
 		);
 	} catch (err) {
 		return new Response(
 			JSON.stringify({
 				error: err instanceof Error ? err.message : String(err),
 			}),
-			{ status: 400, headers: { "Content-Type": "application/json" } },
+			{
+				status: 400,
+				headers: {
+					"Content-Type": "application/json",
+					"Access-Control-Allow-Origin": "*",
+				},
+			},
 		);
 	}
 }
