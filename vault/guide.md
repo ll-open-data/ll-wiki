@@ -98,9 +98,16 @@ name: "Wikiガイド"
 | プロパティ | 終点エンティティ | キャラクター | 声優 |
 |---|---|---|---|
 | `memberOf` | `MusicGroup` | 所属するグループ/ユニット | 所属するグループ/ユニット |
-| `album` | `MusicAlbum` | リリースしたソロシングル/アルバム | - |
-| `affiliation` | `Organization` | 所属している学校 | 所属している事務所 |
+| `album` | `MusicAlbum` | リリースしたソロシングル/アルバム (WARNING レベル) | - |
+| `affiliation` | `Organization` | 所属している学校・組織 | 所属している事務所 |
 | `relatedTo` | `Person` | 担当声優 | 担当キャラクター |
+| `homeLocation` | `Place` | 出身地・居住地 | - |
+| `parent` | `Person` | 親 (子→親方向) | - |
+| `children` | `Person` | 子 (親→子方向) | - |
+| `sibling` | `Person` | 兄弟姉妹 | - |
+| `spouse` | `Person` | 配偶者 | - |
+| `knows` | `Person` | 祖母・伯母など専用プロパティのない親族、または知人 | - |
+| `knowsAbout` | `Thing` / `Organization` | 好きなもの・関心・得意分野 | - |
 
 ### MusicEvent (ライブイベント)
 
@@ -119,8 +126,68 @@ name: "Wikiガイド"
 | `recordedAt` | `MusicEvent` | ライブイベント |
 | `musicBy` | `MusicGroup` | プロジェクトの親ユニット |
 
-### Place (ライブイベント会場)
+### Place (場所)
+
+地理的・物理的な場所全般に使用する。ライブ会場・川・街・観光スポット等を含む。
 
 | プロパティ | 終点エンティティ | 意味 |
 |---|---|---|
 | `subjectOf` | `MusicEvent` | この会場で開催されたライブイベント |
+| `mentions` | `Person` / `Thing` | 関連する人物・物 (WARNING レベル) |
+
+### Organization (組織)
+
+企業・NGO・プロジェクト等に使用する。
+
+| プロパティ | 終点エンティティ | 意味 |
+|---|---|---|
+| `location` | `Place` | 所在地 |
+| `member` | `Person` / `Organization` | メンバー・構成員 |
+| `funder` | `Person` / `Organization` | 資金・寄付で支援する人・組織 |
+| `subOrganization` | `Organization` | 傘下組織 |
+| `parentOrganization` | `Organization` | 親組織 |
+| `mentions` | `Person` / `Thing` | 関連する人物・物 (WARNING レベル) |
+
+### LocalBusiness (店舗・事業所)
+
+`LocalBusiness` は `Place` と `Organization` 両方のサブタイプ。両者のプロパティが使用可能。
+
+| プロパティ | 終点エンティティ | 意味 |
+|---|---|---|
+| `location` | `Place` | 所在地 |
+| `member` | `Person` | 従業員・オーナー等 |
+| `mentions` | `Person` / `Thing` | 関連する人物・物 (WARNING レベル) |
+
+### Thing (物・食品・グッズ)
+
+`Product` 型はバリデーターが商用プロパティ (`image`, `offers` 等) を必須とするため、食品・グッズ等には `Thing` 型を使用する。
+
+| プロパティ | 終点エンティティ | 意味 |
+|---|---|---|
+| `mentions` | `Person` / `Thing` | 関連する人物・物 (WARNING レベル) |
+
+### CreativeWork (記事・リスト等)
+
+キャラクターが作成したおすすめリストや記事等に使用する。
+
+| プロパティ | 終点エンティティ | 意味 |
+|---|---|---|
+| `author` | `Person` | 作成者 |
+| `mentions` | `Person` / `Place` / `Thing` | 言及している人物・場所・物 |
+
+### SoftwareApplication (ソフトウェア)
+
+ソフトウェア・OS・アプリケーション等に使用する。
+
+| プロパティ | 終点エンティティ | 意味 |
+|---|---|---|
+| `producer` | `Organization` | 開発・制作組織 |
+
+### Event (非音楽イベント)
+
+音楽ライブ以外のイベント・祭事等に使用する。`MusicEvent` は別途 `MusicEvent` フォルダで管理する。
+
+| プロパティ | 終点エンティティ | 意味 |
+|---|---|---|
+| `attendee` | `Person` / `Organization` | 参加者 |
+| `location` | `Place` | 開催場所 |
