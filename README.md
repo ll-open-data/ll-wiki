@@ -11,24 +11,55 @@
 - ビルド時に JSON-LD グラフ (`vault/jsonld/graph.jsonld`) を自動生成
 - [Lume](https://lume.land/) で静的サイトをビルドし、[Oxigraph](https://github.com/oxigraph/oxigraph) で SPARQL クエリに対応
 
-## 開発
+## 編集
 
+### 編集フロー
+
+1. 開発サーバーでチェック
 ```sh
-# 静的サイトのビルド + サーバー起動
 deno task start
+```
 
-# ウォッチモードでサーバーのみ起動 (ビルド済み前提)
-deno task dev
-
-# Lume 開発サーバー (ホットリロード)
-deno task serve
-
-# JSON-LD の再生成と検証
+2. JSON-LDグラフの生成
+```sh
 deno task gen-jsonld
+```
 
-# lint / format
+3. TS/JSON等のフォーマット・リント
+```sh
 deno task check
 ```
+
+4. 文書校正のチェック
+```sh
+deno task lint:dry
+```
+
+### 文章校正について
+
+`deno task lint` は [textlint](https://textlint.github.io/) と `preset-ja-technical-writing` を使って日本語の文章品質をチェックします。主なチェック項目は以下のとおりです。
+
+- 文末が `。` で終わっているか
+- 同じ助詞の連続使用がないか
+- 文が長すぎないか (100文字以内)
+- 数量表現が算用数字になっているか (`一つ` → `1つ`)
+- 冗長な表現がないか
+
+#### キャラクター発言などの除外
+
+公式テキストやキャラクターの発言など、ルールを適用すべきでない箇所は以下のコメントで囲んで除外できます。
+
+```markdown
+<!-- textlint-disable -->
+
+此花輝夜:「...」
+
+<!-- textlint-enable -->
+```
+
+#### lintの対象外ファイル
+
+`.textlintignore` に記載されたファイルはlintをスキップします。現在 `vault/llms.txt` は `.txt` 拡張子のためMarkdownとして解析されず誤検知が多いため除外しています。
 
 ## ファイル形式
 

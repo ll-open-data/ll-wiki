@@ -20,7 +20,10 @@
 		"gen-jsonld": "deno run --allow-read --allow-write scripts/gen-jsonld.ts && deno run --allow-net --allow-read scripts/validate.ts",
 		"check": "deno check && deno run -A npm:@biomejs/biome check --write ./",
 		"check:unsafe": "deno check && deno run -A npm:@biomejs/biome check --write --unsafe ./",
-		"start": "deno task build && deno run -A main.ts"
+		"start": "deno task build && deno run -A main.ts",
+		"lint": "deno run -A npm:textlint",
+		"lint:fix": "deno task lint --fix ./vault",
+		"lint:dry": "deno task lint --dry-run ./vault"
 	},
 	"imports": {
 		"@adobe/structured-data-validator": "npm:@adobe/structured-data-validator@^1.7.0",
@@ -33,7 +36,9 @@
 		"lume/": "https://cdn.jsdelivr.net/gh/lumeland/lume@3.2.6/",
 		"lume/jsx-runtime": "https://cdn.jsdelivr.net/gh/oscarotero/ssx@0.1.15/jsx-runtime.ts",
 		"lume_markdown_plugins/": "https://cdn.jsdelivr.net/gh/lumeland/markdown-plugins/",
-		"oxigraph": "npm:oxigraph@^0.5.9"
+		"oxigraph": "npm:oxigraph@^0.5.9",
+		"textlint-filter-rule-comments": "npm:textlint-filter-rule-comments@^1.3.0",
+		"textlint-rule-preset-ja-technical-writing": "npm:textlint-rule-preset-ja-technical-writing@^12.0.2"
 	},
 	"permissions": {
 		"lume": {
@@ -76,5 +81,6 @@
 			"exclude": ["no-import-prefix"]
 		}
 	},
+	"nodeModulesDir": "auto",
 	"lock": false
 }

@@ -66,7 +66,7 @@ async function main() {
 	const output = {
 		"@context": {
 			"@vocab": "https://schema.org/",
-			"@base": "https://ll-wiki.local/",
+			"@base": "https://ll-wiki.marukun712.deno.net/",
 		},
 		"@graph": graph,
 	};
