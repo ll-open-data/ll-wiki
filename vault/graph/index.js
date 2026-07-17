@@ -2,7 +2,7 @@ const DEFAULT_QUERY = `SELECT ?s ?p ?o WHERE {
   ?s ?p ?o .
   FILTER(isIRI(?o))
   FILTER(?p != <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>)
-  }`;
+}`;
 
 async function fetchSparql(query) {
 	const res = await fetch(`/sparql?query=${encodeURIComponent(query)}`);
