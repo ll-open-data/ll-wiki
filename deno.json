@@ -81,6 +81,5 @@
 			"exclude": ["no-import-prefix"]
 		}
 	},
-	"nodeModulesDir": "auto",
-	"lock": false
+	"nodeModulesDir": "auto"
 }
