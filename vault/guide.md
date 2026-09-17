@@ -11,11 +11,11 @@ name: "Wikiガイド"
 
 - SPARQL
     - RDFでページ間の関係を記述し、JSON-LDに変換
-    - `GET /sparql?query=...` エンドポイントで実行 (W3C SPARQL 1.1 Protocol 準拠)
+    - `GET /sparql?query=...` エンドポイントで実行
     - UIは `/graph` で利用可能
 
 - Agentic Search
-    - ただRDFを記述するだけでなく、そこに自然言語で情報を付加することで、LLMによるAgentic Searchを可能にする
+    - RDFを記述するだけでなく、自然言語で情報を付加することで、LLMによるAgentic Searchを可能にする
     - AGENTS.mdとllms.txtにデータ構造、サーチ方法を記載
 
 ## 規約
@@ -53,12 +53,6 @@ name: "Wikiガイド"
 - ページ間のリンク・関係を表すときは、Wikilinks記法を用いて
 [[リンク対象]](関係)
 のように記述する。
-
-高橋ポルカの記述例を示します。
-
-[[いきづらい部]](memberOf)
-
-これらの記法によって、コミット時にJSON-LDが自動生成される。
 
 ## エンティティ別プロパティ規約
 
@@ -100,7 +94,7 @@ name: "Wikiガイド"
 | プロパティ | 終点エンティティ | キャラクター | 声優 |
 |---|---|---|---|
 | `memberOf` | `MusicGroup` | 所属するグループ/ユニット | 所属するグループ/ユニット |
-| `album` | `MusicAlbum` | リリースしたソロシングル/アルバム (WARNING レベル) | - |
+| `album` | `MusicAlbum` | リリースしたソロシングル/アルバム | - |
 | `affiliation` | `Organization` | 所属している学校・組織 | 所属している事務所 |
 | `relatedTo` | `Person` | 担当声優 | 担当キャラクター |
 | `homeLocation` | `Place` | 出身地・居住地 | - |
@@ -135,7 +129,7 @@ name: "Wikiガイド"
 | プロパティ | 終点エンティティ | 意味 |
 |---|---|---|
 | `subjectOf` | `MusicEvent` | この会場で開催されたライブイベント |
-| `mentions` | `Person` / `Thing` | 関連する人物・物 (WARNING レベル) |
+| `mentions` | `Person` / `Thing` | 関連する人物・物 |
 
 ### Organization (組織)
 
@@ -148,7 +142,7 @@ name: "Wikiガイド"
 | `funder` | `Person` / `Organization` | 資金・寄付で支援する人・組織 |
 | `subOrganization` | `Organization` | 傘下組織 |
 | `parentOrganization` | `Organization` | 親組織 |
-| `mentions` | `Person` / `Thing` | 関連する人物・物 (WARNING レベル) |
+| `mentions` | `Person` / `Thing` | 関連する人物・物 |
 
 ### LocalBusiness (店舗・事業所)
 
@@ -158,7 +152,7 @@ name: "Wikiガイド"
 |---|---|---|
 | `location` | `Place` | 所在地 |
 | `member` | `Person` | 従業員・オーナー等 |
-| `mentions` | `Person` / `Thing` | 関連する人物・物 (WARNING レベル) |
+| `mentions` | `Person` / `Thing` | 関連する人物・物 |
 
 ### Thing (物・食品・グッズ)
 
@@ -166,7 +160,7 @@ name: "Wikiガイド"
 
 | プロパティ | 終点エンティティ | 意味 |
 |---|---|---|
-| `mentions` | `Person` / `Thing` | 関連する人物・物 (WARNING レベル) |
+| `mentions` | `Person` / `Thing` | 関連する人物・物 |
 
 ### CreativeWork (記事・リスト等)
 

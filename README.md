@@ -84,7 +84,7 @@ deno task lint:dry
 
 ## SPARQL API
 
-W3C SPARQL 1.1 Protocol 準拠。サーバー起動後、`GET /sparql` で SPARQL SELECT クエリを実行できます。
+サーバー起動後、`GET /sparql` で SPARQL SELECT クエリを実行できます。
 
 ### リクエスト
 

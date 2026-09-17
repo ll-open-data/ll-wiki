@@ -10,14 +10,32 @@
 <select id="type">
   <option value="">選択</option>
   <option value="Person">人 (キャラクター/声優)</option>
-  <option value="Music">楽曲</option>
+  <option value="Music">楽曲 (シングル/アルバム)</option>
   <option value="MusicGroup">グループ/ユニット</option>
   <option value="MusicEvent">ライブイベント</option>
-  <option value="TVSeries">プロジェクト</option>
-  <option value="Place">会場</option>
+  <option value="TVSeries">メディアミックスプロジェクト</option>
+  <option value="Place">場所</option>
+  <option value="Organization">組織</option>
+  <option value="LocalBusiness">店舗・事業所</option>
+  <option value="Thing">物・食品・グッズ</option>
+  <option value="CreativeWork">記事・リスト等</option>
+  <option value="SoftwareApplication">ソフトウェア</option>
+  <option value="Event">非音楽イベント</option>
 </select>
 
 <div id="conditions" style="margin-block: 1rem"></div>
+
+<fieldset>
+  <legend>条件の組み合わせ</legend>
+  <label for="mode-and">
+    <input type="radio" id="mode-and" name="mode" value="and" checked>
+    AND (すべて満たす)
+  </label>
+  <label for="mode-or">
+    <input type="radio" id="mode-or" name="mode" value="or">
+    OR (いずれか満たす)
+  </label>
+</fieldset>
 
 <button type="button" id="add" disabled>+ 条件を追加</button>
 <button type="button" id="run" disabled style="margin-inline-start: 0.5rem">実行</button>

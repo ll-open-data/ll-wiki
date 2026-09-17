@@ -40,6 +40,29 @@ const PROPERTIES = {
 		{ label: "親ユニット", prop: "musicBy" },
 	],
 	Place: [{ label: "開催イベント", prop: "subjectOf" }],
+	Organization: [
+		{ label: "所在地", prop: "location" },
+		{ label: "メンバー・構成員", prop: "member" },
+		{ label: "資金・寄付で支援する人・組織", prop: "funder" },
+		{ label: "傘下組織", prop: "subOrganization" },
+		{ label: "親組織", prop: "parentOrganization" },
+		{ label: "関連する人物・物", prop: "mentions" },
+	],
+	LocalBusiness: [
+		{ label: "所在地", prop: "location" },
+		{ label: "従業員・オーナー等", prop: "member" },
+		{ label: "関連する人物・物", prop: "mentions" },
+	],
+	Thing: [{ label: "関連する人物・物", prop: "mentions" }],
+	CreativeWork: [
+		{ label: "作成者", prop: "author" },
+		{ label: "言及している人物・場所・物", prop: "mentions" },
+	],
+	SoftwareApplication: [{ label: "開発・制作組織", prop: "producer" }],
+	Event: [
+		{ label: "参加者", prop: "attendee" },
+		{ label: "開催場所", prop: "location" },
+	],
 };
 
 const DEFAULT_QUERY = `SELECT ?s ?p ?o WHERE {
@@ -48,23 +71,35 @@ const DEFAULT_QUERY = `SELECT ?s ?p ?o WHERE {
   FILTER(?p != <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>)
 }`;
 
-function buildSingleQuery(type, conditions) {
-	let q = select([v("name")]).where(triple("s", "a", schema(type)));
-	for (const { prop, value } of conditions) {
-		q = q.where(triple("s", schema(prop), ll(value)));
+function buildSingleQuery(type, conditions, mode) {
+	let q = select([v("s"), v("name")]).where(triple("s", "a", schema(type)));
+	if (mode === "or") {
+		for (const { prop, value } of conditions) {
+			q = q.union(triple("s", schema(prop), ll(value)));
+		}
+	} else {
+		for (const { prop, value } of conditions) {
+			q = q.where(triple("s", schema(prop), ll(value)));
+		}
 	}
 	q = q.where(triple("s", schema("name"), v("name")));
 	return q.build().value;
 }
 
-function buildQueries(type, conditions) {
+function buildQueries(type, conditions, mode) {
 	if (type === "Music") {
 		return [
-			buildSingleQuery("MusicRecording", conditions),
-			buildSingleQuery("MusicAlbum", conditions),
+			{
+				type: "MusicRecording",
+				query: buildSingleQuery("MusicRecording", conditions, mode),
+			},
+			{
+				type: "MusicAlbum",
+				query: buildSingleQuery("MusicAlbum", conditions, mode),
+			},
 		];
 	}
-	return [buildSingleQuery(type, conditions)];
+	return [{ type, query: buildSingleQuery(type, conditions, mode) }];
 }
 
 function getConditions() {
@@ -74,14 +109,22 @@ function getConditions() {
 	}));
 }
 
+function getMode() {
+	return document.querySelector('input[name="mode"]:checked').value;
+}
+
 function updateSparql() {
 	const type = document.getElementById("type").value;
 	if (!type) return;
 	const conditions = getConditions();
 	if (conditions.some((c) => !c.value)) return;
-	document.getElementById("sparql").value = buildQueries(type, conditions).join(
-		"\n\n",
-	);
+	document.getElementById("sparql").value = buildQueries(
+		type,
+		conditions,
+		getMode(),
+	)
+		.map((q) => q.query)
+		.join("\n\n");
 }
 
 async function fetchSparql(query) {
@@ -166,17 +209,27 @@ function addConditionRow(type, props) {
 	loadValues();
 }
 
-async function runQueries(queries) {
+function pageHref(type, s) {
+	const id = s.replace(INSTANCE_BASE, "");
+	return `/${type}/${id.split("/").map(encodeURIComponent).join("/")}/`;
+}
+
+async function runQueries(items) {
 	const status = document.getElementById("status");
 	const result = document.getElementById("result");
 
 	status.textContent = "実行中...";
 	result.innerHTML = "";
 
+	const requests = items.map((item) =>
+		typeof item === "string" ? { type: null, query: item } : item,
+	);
+	const linkable = requests.every((r) => r.type && r.query.includes("?s"));
+
 	try {
 		const allRows = [];
 		let vars = [];
-		for (const query of queries) {
+		for (const { type, query } of requests) {
 			const json = await fetchSparql(query);
 			if (json.error) throw new Error(json.error);
 			vars = json.head.vars;
@@ -185,13 +238,14 @@ async function runQueries(queries) {
 				for (const col of vars) {
 					row[col] = binding[col]?.value ?? "";
 				}
+				if (type) row.__type = type;
 				allRows.push(row);
 			}
 		}
 
 		const seen = new Set();
 		const deduped = allRows.filter((r) => {
-			const key = vars.map((col) => r[col]).join("|");
+			const key = linkable ? r.s : vars.map((col) => r[col]).join("|");
 			if (seen.has(key)) return false;
 			seen.add(key);
 			return true;
@@ -202,10 +256,12 @@ async function runQueries(queries) {
 			return;
 		}
 
+		const displayCols = linkable ? vars.filter((col) => col !== "s") : vars;
+
 		const table = document.createElement("table");
 		const thead = document.createElement("thead");
 		const headerRow = document.createElement("tr");
-		for (const col of vars) {
+		for (const col of displayCols) {
 			const th = document.createElement("th");
 			th.textContent = col;
 			headerRow.appendChild(th);
@@ -216,9 +272,16 @@ async function runQueries(queries) {
 		const tbody = document.createElement("tbody");
 		for (const row of deduped) {
 			const tr = document.createElement("tr");
-			for (const col of vars) {
+			for (const col of displayCols) {
 				const td = document.createElement("td");
-				td.textContent = row[col] ?? "";
+				if (linkable && col === "name") {
+					const a = document.createElement("a");
+					a.href = pageHref(row.__type, row.s);
+					a.textContent = row[col] ?? "";
+					td.appendChild(a);
+				} else {
+					td.textContent = row[col] ?? "";
+				}
 				tr.appendChild(td);
 			}
 			tbody.appendChild(tr);
@@ -253,8 +316,12 @@ document.getElementById("run").addEventListener("click", () => {
 			"エラー: 値が選択されていない条件があります";
 		return;
 	}
-	runQueries(buildQueries(type, conditions));
+	runQueries(buildQueries(type, conditions, getMode()));
 });
+
+for (const radio of document.querySelectorAll('input[name="mode"]')) {
+	radio.addEventListener("change", updateSparql);
+}
 
 document.getElementById("direct-run").addEventListener("click", () => {
 	const query = document.getElementById("sparql").value.trim();
