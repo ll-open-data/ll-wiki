@@ -5,7 +5,7 @@ const graphJson = await Deno.readTextFile("./_site/jsonld/graph.jsonld");
 const store = new Store();
 store.load(graphJson, {
 	format: "application/ld+json",
-	base_iri: "https://ll-wiki.marukun712.deno.net/",
+	base_iri: "https://ll-wiki.maril.blue/",
 });
 
 // https://docs.deno.com/examples/http_server_cors/
